@@ -1,0 +1,31 @@
+Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Comments
+70.0,Climbing Stairs,★,746.0,1137.0,,,,"I: O(n), S = O(n), T = O(n)"
+303.0,Range Sum Query - Immutable,★,1218.0,,,,,
+53.0,Maximum Subarray,★★,121.0,,,,,
+62.0,Unique Paths,★★,63.0,64.0,120.0,174.0,931.0,"I: O(mn), S = O(mn), T = O(mn)"
+,,,1210.0,,,,,
+85.0,Maximal Rectangle,★★★,221.0,304.0,1277.0,,,
+198.0,House Robber,★★★,213.0,309.0,740.0,790.0,801.0,"I: O(n), S = O(3n), T = O(3n)"
+279.0,Perfect Squares,★★★,,,,,,"I: n, S = O(n), T = O(n*sqrt(n))"
+139.0,Word Break,★★★,140.0,818.0,,,,"I: O(n), S = O(n), T = O(n^2)"
+300.0,Longest Increasing Subsequence,★★★,673.0,1048.0,,,,
+96.0,Unique Binary Search Trees,★★★,,,,,,
+1105.0,Filling Bookcase Shelves,★★★,,,,,,"I: O(n) + t, S = O(n), T = O(n^2)"
+131.0,Palindrome Partitioning,★★★,89.0,,,,,"I: O(n), S = O(2^n), T = O(2^n)"
+72.0,Edit Distance,★★★,10.0,44.0,97.0,115.0,583.0,"I: O(m+n), S = O(mn), T = O(mn)"
+,,,712.0,1187.0,1143.0,1092.0,718.0,
+1139.0,Largest 1-Bordered Square,★★★,,,,,,"I: O(mn), S = O(mn)
+T = O(mn*min(n,m))"
+688.0,Knight Probability in Chessboard,★★★,576.0,935.0,,,,"I: O(mn) + k
+S = O(kmn), T = O(kmn)"
+322.0,Coin Change,★★★,377.0,416.0,494.0,1043.0,1049.0,"I: O(n) + k, S = O(n), T = O(kn)"
+,,,1220.0,1230.0,1262.0,1269.0,,
+813.0,Largest Sum of Averages,★★★★,1278.0,1335.0,410.0,,,"I: O(n) + k
+S = O(n*k), T = O(kn^2)"
+1223.0,Dice Roll Simulation,★★★★,,,,,,"I: O(n) + k + p
+S = O(k*p), T = O(n^2kp)"
+312.0,Burst Balloons,★★★★,664.0,1024.0,1039.0,1140.0,1130.0,"I: O(n), S = O(n^2), T = O(n^3)"
+741.0,Cherry Pickup,★★★★,,,,,,"I: O(n^2), S = O(n^3), T = O(n^3)"
+546.0,Remove Boxes,★★★★★,,,,,,"I: O(n), S = O(n^3), T = O(n^4)"
+943.0,Find the Shortest Superstring,★★★★★,980.0,996.0,1125.0,,,"I: O(n)
+S = O(n*2^n), T = (n^2*2^n)"
