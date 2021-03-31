@@ -97,7 +97,7 @@ class solution:
         l = -1 ## current largest length
         P = [] ## current path with the largest length
 
-        ## BFS: time O(len(words)**2)
+        ## BFS: time O(len(words)**2 * (2**len(words)))
         ##space: O(len(words)* (2**len(words))), store d_set
         while Q:
             node, node_set, path, cur_len = Q.popleft()
