@@ -18,7 +18,7 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,
 T = O(mn*min(n,m))"
 688,Knight Probability in Chessboard,★★★,576,935,,,,"I: O(mn) + k
 S = O(kmn), T = O(kmn)"
-322,Coin Change,★★★,377,416,494,1043,1049,"I: O(n) + k, S = O(n), T = O(kn)"
+322,Coin Change (knapsack),★★★,377,416 (knapsack),494,1043,1049,"I: O(n) + k, S = O(n), T = O(kn)"
 ,,,1220,1230,1262,1269,,
 813,Largest Sum of Averages,★★★★,1278,1335,410,,,"I: O(n) + k
 S = O(n*k), T = O(kn^2)"
@@ -27,5 +27,5 @@ S = O(k*p), T = O(n^2kp)"
 312,Burst Balloons,★★★★,664,1024,1039,1140,1130,"I: O(n), S = O(n^2), T = O(n^3)"
 741,Cherry Pickup,★★★★,,,,,,"I: O(n^2), S = O(n^3), T = O(n^3)"
 546,Remove Boxes,★★★★★,,,,,,"I: O(n), S = O(n^3), T = O(n^4)"
-943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,996,1125,,,"I: O(n)
+943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,996,1125 (knapsack),,,"I: O(n)
 S = O(n*2^n), T = (n^2*2^n)"
