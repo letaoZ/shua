@@ -1,31 +1,31 @@
-Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Comments
-70,Climbing Stairs,★,746,1137,,,,"I: O(n), S = O(n), T = O(n)"
-303,Range Sum Query - Immutable,★,1218,,,,,
-53,Maximum Subarray,★★,121,,,,,
-62,Unique Paths,★★,63,64,120,174,931,"I: O(mn), S = O(mn), T = O(mn)"
-,,,1210,,,,,
-85,Maximal Rectangle,★★★,221,304,1277,,,
-198,House Robber,★★★,213,309,740,790,801,"I: O(n), S = O(3n), T = O(3n)"
-279,Perfect Squares,★★★,,,,,,"I: n, S = O(n), T = O(n*sqrt(n))"
-139,Word Break,★★★,140,818,,,,"I: O(n), S = O(n), T = O(n^2)"
-300,Longest Increasing Subsequence,★★★,673,1048,,,,
-96,Unique Binary Search Trees,★★★,,,,,,
-1105,Filling Bookcase Shelves,★★★,,,,,,"I: O(n) + t, S = O(n), T = O(n^2)"
-131,Palindrome Partitioning,★★★,89,,,,,"I: O(n), S = O(2^n), T = O(2^n)"
-72,Edit Distance,★★★,10,44,97,115,583,"I: O(m+n), S = O(mn), T = O(mn)"
-,,,712,1187,1143,1092,718,
-1139,Largest 1-Bordered Square,★★★,,,,,,"I: O(mn), S = O(mn)
+Done,Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Comments
+started,70,Climbing Stairs,★,746 (done),1137,,,,"I: O(n), S = O(n), T = O(n)"
+,303,Range Sum Query - Immutable,★,1218,,,,,
+,53,Maximum Subarray,★★,121,,,,,
+started,62(done),Unique Paths,★★,63 (done),64,120,174,931,"I: O(mn), S = O(mn), T = O(mn)"
+,,,,1210,,,,,
+,85,Maximal Rectangle,★★★,221,304,1277,,,
+,198,House Robber,★★★,213,309,740,790,801,"I: O(n), S = O(3n), T = O(3n)"
+,279,Perfect Squares,★★★,,,,,,"I: n, S = O(n), T = O(n*sqrt(n))"
+,139,Word Break,★★★,140,818,,,,"I: O(n), S = O(n), T = O(n^2)"
+,300,Longest Increasing Subsequence,★★★,673,1048,,,,
+,96,Unique Binary Search Trees,★★★,,,,,,
+,1105,Filling Bookcase Shelves,★★★,,,,,,"I: O(n) + t, S = O(n), T = O(n^2)"
+,131,Palindrome Partitioning,★★★,89,,,,,"I: O(n), S = O(2^n), T = O(2^n)"
+,72,Edit Distance,★★★,10,44,97,115,583,"I: O(m+n), S = O(mn), T = O(mn)"
+,,,,712,1187,1143,1092,718,
+,1139,Largest 1-Bordered Square,★★★,,,,,,"I: O(mn), S = O(mn)
 T = O(mn*min(n,m))"
-688,Knight Probability in Chessboard,★★★,576,935,,,,"I: O(mn) + k
+,688,Knight Probability in Chessboard,★★★,576,935,,,,"I: O(mn) + k
 S = O(kmn), T = O(kmn)"
-322,Coin Change (knapsack),★★★,377,416 (knapsack),494,1043,1049,"I: O(n) + k, S = O(n), T = O(kn)"
-,,,1220,1230,1262,1269,,
-813,Largest Sum of Averages,★★★★,1278,1335,410,,,"I: O(n) + k
+started,322(done),Coin Change (knapsack),★★★,377,416 (knapsack),494,1043,1049,"I: O(n) + k, S = O(n), T = O(kn)"
+,,,,1220,1230,1262,1269,,
+,813,Largest Sum of Averages,★★★★,1278,1335,410,,,"I: O(n) + k
 S = O(n*k), T = O(kn^2)"
-1223,Dice Roll Simulation,★★★★,,,,,,"I: O(n) + k + p
+,1223,Dice Roll Simulation,★★★★,,,,,,"I: O(n) + k + p
 S = O(k*p), T = O(n^2kp)"
-312,Burst Balloons,★★★★,664,1024,1039,1140,1130,"I: O(n), S = O(n^2), T = O(n^3)"
-741,Cherry Pickup,★★★★,,,,,,"I: O(n^2), S = O(n^3), T = O(n^3)"
-546,Remove Boxes,★★★★★,,,,,,"I: O(n), S = O(n^3), T = O(n^4)"
-943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,996,1125 (knapsack),,,"I: O(n)
+,312,Burst Balloons,★★★★,664,1024,1039,1140,1130,"I: O(n), S = O(n^2), T = O(n^3)"
+,741,Cherry Pickup,★★★★,,,,,,"I: O(n^2), S = O(n^3), T = O(n^3)"
+,546,Remove Boxes,★★★★★,,,,,,"I: O(n), S = O(n^3), T = O(n^4)"
+DONE,943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,996,1125 (knapsack),,,"I: O(n)
 S = O(n*2^n), T = (n^2*2^n)"
