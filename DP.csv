@@ -18,7 +18,7 @@ started,62(done),Unique Paths,★★,63 (done),64,120,174,931,"I: O(mn), S = O(m
 T = O(mn*min(n,m))"
 ,688,Knight Probability in Chessboard,★★★,576,935,,,,"I: O(mn) + k
 S = O(kmn), T = O(kmn)"
-started,322(done),Coin Change (knapsack),★★★,377,416 (knapsack),494,1043,1049,"I: O(n) + k, S = O(n), T = O(kn)"
+started,322(done),Coin Change (knapsack),★★★,377(done),416 (knapsack),494,1043,1049,"I: O(n) + k, S = O(n), T = O(kn)"
 ,,,,1220,1230,1262,1269,,
 ,813,Largest Sum of Averages,★★★★,1278,1335,410,,,"I: O(n) + k
 S = O(n*k), T = O(kn^2)"

@@ -102,3 +102,43 @@ class Solution:
             t = dp_skills[t][0]
             
         return res
+
+
+    def smallestSufficientTeam_slow_yet_work(
+            self, req_skills: List[str], people: List[List[str]]) -> List[int]:
+
+        
+        ## skill to digit
+        skill_n = {sk:ii for ii,sk in enumerate(req_skills)}
+        
+        ## for each skill set find the min set of people
+        nskills = len(req_skills)
+        K = (1<<(nskills)) 
+        
+        dp = [[] for _ in range(K)]
+        
+        dp[0] = [-1]
+        
+        
+        ## better to use dictionary
+        ## loop through keys of dictionary
+        ## keys = set of kills in digits
+        for i in range(0,K):
+            
+            for ip,person in enumerate(people):
+                p_dig = 0
+                for ss in person:
+                    p_dig += (1<<skill_n[ss])
+                added_person = (i|p_dig) 
+                # print('added_person',added_person)
+                if len(dp[i]) == 0 or ip in dp[added_person]:
+                    continue
+                # print(dp[i],i)
+                if added_person == i:
+                    continue
+                    
+                if len(dp[added_person]) > len(dp[i]) + 1 or len(dp[added_person]) == 0:
+                    dp[added_person] = dp[i] + [ip]
+        res = dp[-1]
+        res.remove(-1)
+        return res
