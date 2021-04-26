@@ -39,10 +39,10 @@ class Solution:
         return res
     
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
-        
+        ## two points
         if k == 0:
             return 0
-        
+         
         sz = len(nums)
         prods = 1
         res = 0
