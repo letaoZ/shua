@@ -1,6 +1,6 @@
 ## all sum related questions here
 
-**494. Target Sum
+#**494. Target Sum
 
 *1. Two Sum (Special case of 494)
 
