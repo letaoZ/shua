@@ -10,11 +10,11 @@
 
 *523. Continuous Subarray Sum (special case of 974)
 
-*713. Subarray Product Less Than K (special case of 974 + new questions length )
+*713. Subarray Product Less Than K (special case of 974 + two points )
 
 *325. Maximum Size Subarray Sum Equals k (special case 974 + new questions length )
 
-*209. Minimum Size Subarray Sum (special case + transformation of 974)
+*209. Minimum Size Subarray Sum (special case 974 + new questions length )
 
 *1590. Make Sum Divisible by P
 
