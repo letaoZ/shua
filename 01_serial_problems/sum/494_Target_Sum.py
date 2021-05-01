@@ -41,7 +41,6 @@ class Solution:
     ## Transform to 0-1 knapsack
     def findTargetSumWays_knapsack(self, nums: List[int], target: int) -> int:
 
-        
         ## idea: P-- sum of positive, N -- sum of negative
         ## P+N = total, P-N = target
         ## so 2P = tar+total --> P = (tar+total)/2 new target
@@ -58,14 +57,15 @@ class Solution:
         ## mew target becomes P
         ## partial sum = P
         
-        dp = [0 for _ in range(2*total + 1)]
+        dp = [0 for _ in range(P+1)]
         dp[0] = 1
         for n in nums:
-            for ss in reversed(range(0, P-n +1 )):
+            for ss in reversed(range(n, P +1 )):
                 ## in knapsack, this is max(dp[weight], dp[weight-wi]+vi)
 
-                dp[ss+n] += dp[ss]
+                dp[ss] += dp[ss-n]
         return dp[P]
+]
 
 
     def findTargetSumWays_dp_2d(self, nums: List[int], S: int) -> int:
@@ -118,3 +118,42 @@ class Solution:
         return dp[S+total]
         
             
+    def findTargetSumWays_solution_return_express(self, nums, target: int) -> int:
+
+        ## dp[k]: keep tracking of sum=k, expressions
+        
+        dp = {}
+        dp[0] = [""]
+        
+        for n in nums:
+            
+            dpt = collections.defaultdict(list)
+            
+            for psum in dp:
+                dpt[psum+n] += [f"{ll}+{n}" for ll in dp[psum]]
+                dpt[psum-n] += [f"{ll}-{n}" for ll in dp[psum]]
+            dp = dpt
+        # print(dp)
+        return len(dp[target]) if target in dp else 0
+
+    def findTargetSumWays_dp_dic(self, nums, target: int) -> int:
+        
+        
+        
+        ## dp[k]: keep tracking of sum=k, expressions
+        
+        if not nums:
+            return 0
+        dp = {}
+        dp[0] = 1
+        
+        for n in nums:
+            
+            dpt = collections.defaultdict(int)
+            
+            for psum in dp:
+                dpt[psum+n] += dp[psum]
+                dpt[psum-n] += dp[psum]
+            dp = dpt
+        # print(dp)
+        return dp[target] if target in dp else 0
