@@ -16,15 +16,14 @@
 
 *209. Minimum Size Subarray Sum (special case 974 + new questions length )
 
+*152. Maximum Product Subarray: this problem can be solved using DP, but it is slow.  
+
+
 *1590. Make Sum Divisible by P
 
 *1099. Two Sum Less Than K
 
 *167. Two Sum II - Input array is sorted
-
-
-*152. Maximum Product Subarray
-
 
 
 
