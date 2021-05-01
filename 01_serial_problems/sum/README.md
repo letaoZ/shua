@@ -16,7 +16,7 @@
 
 *209. Minimum Size Subarray Sum (special case 974 + new questions length )
 
-*152. Maximum Product Subarray: this problem can be solved using DP, but it is slow.  
+* *152. Maximum Product Subarray: this problem can be solved using DP, but it is slow.  *
 
 
 *1590. Make Sum Divisible by P
