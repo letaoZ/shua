@@ -19,9 +19,9 @@
 * *152. Maximum Product Subarray: this problem can be solved using DP, but it is slow.  *
 
 
-*1590. Make Sum Divisible by P
+*1590. Make Sum Divisible by P (special case of 974, dict)
 
-*1099. Two Sum Less Than K
+*1099. Two Sum Less Than K (special case of 974, two pointer)
 
 *167. Two Sum II - Input array is sorted
 
