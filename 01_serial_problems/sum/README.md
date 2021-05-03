@@ -23,7 +23,14 @@
 
 *1099. Two Sum Less Than K (special case of 974, two pointer)
 
-*167. Two Sum II - Input array is sorted
+*167. Two Sum II - Input array is sorted (two pointer)
+
+**628. Maximum Product of Three Numbers (just use tricks)**
+
+**238. Product of Array Except Self**
+
+
+
 
 
 
