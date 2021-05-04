@@ -4,7 +4,8 @@ Hard
 
 You are given several boxes with different colors represented by different positive numbers.
 
-You may experience several rounds to remove boxes until there is no box left. Each time you can choose some continuous boxes with the same color (i.e., composed of k boxes, k >= 1), remove them and get k * k points.
+You may experience several rounds to remove boxes until there is no box left. 
+Each time you can choose some continuous boxes with the same color (i.e., composed of k boxes, k >= 1), remove them and get k * k points.
 
 Return the maximum points you can get.
 
@@ -33,23 +34,32 @@ Output: 1
 
 
 
+
+
+
+
+
 class Solution:## use partial nums as key, to memorize process, still too slow
-    def removeBoxes(self, boxes: List[int]) -> int:
+    def removeBoxes_3d(self, boxes: List[int]) -> int:
         sz = len(boxes)
         dp = [ [ [0]*sz for _ in range(sz)] for _ in range(sz)]
-        ## dp[i][j][k]!= max score of subarray from box[i] to box[j], where there are k boxes in box[j+1] to box[n] of the same color as box[j]
-
+        ## dp[i][j][k] = max score of subarray from box[i] to box[j], where there are k boxes in box[j+1] to box[n] of the same color as box[j]
+        ## 注意，这里不管j+1 to n发生了啥，只考虑i to j 且 j与后面的k个相同
         def searching(boxes, l, r, k):
             if l>r: return 0
             if dp[l][r][k] > 0: return dp[l][r][k]
+            
+            ## 注意，这里不管j+1 to n发生了啥，只考虑i to j 且 j与后面的k个相同
+            ## 这个意思就是：我把后面k个都接到了r上，得到k+1个continuously same
+            ## 然后remove他们得到l to r-1,这时r-1为最后一个数字
             
             dp[l][r][k] = searching(boxes,l,r-1,0) + (k+1)**2
             for i in range(l,r):
                 if boxes[i] == boxes[r]:
                     dp[l][r][k]= max(dp[l][r][k], searching(boxes,l,i,k+1 ) + searching(boxes,i+1,r-1, 0))
-            
             return dp[l][r][k]
         return searching(boxes, 0, sz-1, 0)
+        
         
 class Solution1:## use partial nums as key, to memorize process, still too slow
     def removeBoxes(self, boxes: List[int]) -> int:
