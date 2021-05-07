@@ -42,10 +42,55 @@ Both input strings will be non-empty and only contain characters 'R','Y','B','G'
 
 
 
+
+
+## it seems like ONLY brutal force works
+## consider the case: RRWWRRBBR and WB 
+ RRWWRRB[W]BR will be the first step
+
 '''
 
-
 class Solution:
+    def findMinStep(self, board: str, hand: str) -> int:
+
+        def clean(board):
+            stack = []
+            for b in board:
+                if stack and stack[-1][0] != b and stack[-1][1] >= 3:
+                    stack.pop()
+                if not stack or stack[-1][0] != b:
+                    stack += [b, 1],
+                else:
+                    stack[-1][1] += 1
+            if stack and stack[-1][1] >= 3:
+                stack.pop()
+            return ''.join([a*b for a,b in stack])
+
+        @lru_cache(None)
+        def dfs(board, hand):
+            if not board:
+                return 0
+            if not hand:
+                return float('inf')
+            m = len(board)
+            ans = float('inf')
+            for j, b in enumerate(hand):
+                new_hand = hand[:j] + hand[j+1:]
+                for i in range(m + 1):
+                    new_board = clean(board[:i] + b + board[i:])
+                    ans = min(ans, 1 + dfs(new_board, new_hand))
+            return ans
+        
+        ans = dfs(board, hand)
+        return ans if ans < float('inf') else -1
+
+
+
+
+
+
+
+class Solution1: ## slow and wrong... 
     def findMinStep_my_extremely_slowSolution(self, board: str, hand: str) -> int:
         ## Note the length is 16, so 
         ## 16 factorial we may still get an answer
