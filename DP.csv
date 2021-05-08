@@ -25,7 +25,7 @@ S = O(n*k), T = O(kn^2)"
 ,1223,Dice Roll Simulation,★★★★,,,,,,"I: O(n) + k + p
 S = O(k*p), T = O(n^2kp)"
 ,312,Burst Balloons,★★★★,664,1024,1039,1140,1130,"I: O(n), S = O(n^2), T = O(n^3)"
-,741,Cherry Pickup,★★★★,147,1463,,,,"I: O(n^2), S = O(n^3), T = O(n^3)"
+,741,Cherry Pickup,★★★★,147,1463,64,,,"I: O(n^2), S = O(n^3), T = O(n^3)"
 ,546,Remove Boxes,★★★★★,312,488,,,,"I: O(n), S = O(n^3), T = O(n^4)"
 DONE,943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,996,1125 (knapsack),,,"I: O(n)
 S = O(n*2^n), T = (n^2*2^n)"
