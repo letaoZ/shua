@@ -41,6 +41,8 @@ grid[n - 1][n - 1] != -1
 
 '''
 
+
+## IDEA: need to assume dp[i][j] as STARTING from I,J, max result we get!!!
 class Solution:
     
     def cherryPickup1(self, grid: List[List[int]]) -> int:
