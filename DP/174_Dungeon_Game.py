@@ -43,6 +43,7 @@ n == dungeon[i].length
 
 
 ## important: blood later cannot help blood now!!!
+List = list
 class Solution:
 
     def calculateMinimumHP_formal_DP_bottomup(self, g: List[List[int]]) -> int:
@@ -115,5 +116,12 @@ class Solution:
 
         
 
-        
-        
+g = [[-1]]
+g = [[0]]
+g = [[-1,1,-1]]
+g = [[-2,-3],[2,2]]
+g = [[-2,-3],[2,-2]]
+
+solu = Solution()
+solu.calculateMinimumHP_formal_DP_bottomup(g)
+
