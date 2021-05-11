@@ -25,8 +25,12 @@ NOTE: when it is about "min/max" length we need "two pointer" structure in the c
 
 1590: remove the smallest subarray s.t. sum of the remaining elts is divisible by P
 >> need SMALLEST subarray
+>> 
+
 974: count num of subarrays s.t. the sum is divisible by K
 >> only need a dict to record number of r where r = sum mod K
+>> 
+
 
 *1099. Two Sum Less Than K (special case of 974, two pointer)
 
