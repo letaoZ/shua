@@ -6,7 +6,7 @@
 
 **974. Subarray Sums Divisible by K**
 
-NOTE: when it is about "min/max" length, we need "two pointer" structure in the code
+NOTE: when it is about "min/max" length we need "two pointer" structure in the code; When an "ordered" nums is given or we can use "ordered" nums, we may only need two pointer structure
 
 *560. Subarray Sum Equals K (special case of 974)
 
