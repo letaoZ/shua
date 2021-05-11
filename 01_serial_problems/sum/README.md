@@ -5,6 +5,8 @@
 *1. Two Sum (Special case of 494)
 
 **974. Subarray Sums Divisible by K**
+NOTE: when it is about "min/max" length, we use two pointer
+
 
 *560. Subarray Sum Equals K (special case of 974)
 
