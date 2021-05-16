@@ -34,6 +34,39 @@ n == nums.length
 
 class Solution:
     def maxCoins_dp_mem_slow(self, nums: List[int]) -> int:
+
+        
+        ## if just one number, take its power
+        num_st = set(nums)
+        if len(num_st) ==1:
+            if len(nums)>3:
+                return nums[0]**3*(len(nums) -2 ) + nums[0]**2 +nums[0]
+
+            
+        sz = len(nums)
+        if sz == 0:
+            return 0
+        if sz == 1:
+            return nums[0]
+        
+        
+        ## pop all zeros
+        i0 = 0
+        i = 0
+        while i<sz:
+            if nums[i] != 0:
+                nums[i0] = nums[i]
+                i += 1
+                i0 += 1
+            else:
+                i += 1
+        nums = nums[:i0]
+        sz = len(nums)
+        if sz == 0:
+            return 0
+        if sz == 1:
+            return nums[0]        
+        
         def prod(i,j,k,nums):
             p1=p2=p3 = 1
 
@@ -64,7 +97,14 @@ class Solution:
         res = searching(nums, dp)
         return res
     
+    ## reason for barely working is because
+    ## input could be one number repeat n times...
     def maxCoins_barely_working(self, nums: List[int]) -> int:
+        ## if just one number, take its power
+        num_st = set(nums)
+        if len(num_st) ==1:
+            if len(nums)>3:
+                return nums[0]**3*(len(nums) -2 ) + nums[0]**2 +nums[0]
         
         ## dp[i][j]: max coins you can get out of of nums[i] to nums[j]
         sz = len(nums)
@@ -105,8 +145,15 @@ class Solution:
                     dp[i][j] = max(dp[i][j], dp[i][k-1] + nums[k]*nums[i-1]*nums[j+1]+dp[k+1][j])
         return dp[1][sz]
     
-    def maxCoins(self, nums: List[int]) -> int:
-        ## huahua method, still slow
+    def maxCoins_bottomUp(self, nums: List[int]) -> int:
+        ## if just one number, take its power
+        num_st = set(nums)
+        if len(num_st) ==1:
+            if len(nums)>3:
+                return nums[0]**3*(len(nums) -2 ) + nums[0]**2 +nums[0]
+        
+
+        ## huahua method,
         ## pop all zeros
         sz = len(nums)
         i0 = 0
