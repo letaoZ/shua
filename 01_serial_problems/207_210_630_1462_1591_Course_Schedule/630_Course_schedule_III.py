@@ -9,6 +9,7 @@ def searching(courses, visited, path, i):
         return visited[i]
 
     
+    
     bound = courses[i][1] - courses[i][0]
     res = 1
     for j in range(i+1, len(courses)):
@@ -20,13 +21,15 @@ def searching(courses, visited, path, i):
     return res
 
 courses = [[100,200],[200,1300],[1000,1250],[2000,3200]]
+courses = [[1,2],[1,1]]
 courses.sort(key=lambda v : -v[1])
 visited = [0]*len(courses)
 print(courses)
 
 res = 0
 for i in range(len(courses)):
-    if visited[i] ==1: continue
+
+    visited = [0]*len(courses)
     res = max(res, searching(courses, visited, path, i))
     print(res)
 res
