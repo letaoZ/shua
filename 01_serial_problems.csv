@@ -1,0 +1,15 @@
+Name,problems,Notes,,,,,,,Comments
+knapsack,39_40_216_377,,,,,,,,traversal
+,,,,,,,,,
+unique_paths,62_63_64_980,,,,,,,,
+,,,,,,,,,
+sum,494+1,sum related DP+two pointer,,,,,,,
+,"974+560, 523, 173, 325, 209, 152, 1590, 974, 1099, 167",,,,,,,,
+,"628, 238 )",,,,,,,,
+,,,,,,,,,
+graph  ,dfs,,,,,,,,
+,"207, 210, 1462",course scheduler,,,,,,,
+,"630,","course scheduler, but use stack!",,,,,,,
+,"1591, ",Dp + topological sort,,,,,,,
+,"undir, tree+componets",,,,,,,,
+,"261, 323",,,,,,,,
