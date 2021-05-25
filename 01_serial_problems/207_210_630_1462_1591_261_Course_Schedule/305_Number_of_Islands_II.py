@@ -71,10 +71,10 @@ class Solution:
 
 
 
-m = 1;
-n = 1;
-positions = [[0,0]];
+m = 2;
+n = 2;
+positions = [[0,0],[1,1]];
 solu = Solution()
 solu.numIslands2(
-    m,n, poisitions
+    m,n, positions
 )
