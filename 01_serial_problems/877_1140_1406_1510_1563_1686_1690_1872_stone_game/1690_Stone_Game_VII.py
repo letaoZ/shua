@@ -39,6 +39,7 @@ n == stones.length
 ### NOTE: bob is trying to minimize alice-bob... so he is to maximize bob - alice... stupid!!
 
 class Solution:
+    ## O(N**2)
     def stoneGameVII_bottomUP(self, stones: List[int]) -> int:
         SZ = len(stones)
         psum = [0]*(SZ+1)
@@ -58,7 +59,7 @@ class Solution:
                     psum[j] - psum[i]  - dp[i][j-1])
         return dp[0][SZ-1]
 
-        
+    ## O(N**2)
     def stoneGameVII_topdown_dp_mem(self, stones: List[int]) -> int:
         SZ = len(stones)
         psum = [0]*(SZ+1)
