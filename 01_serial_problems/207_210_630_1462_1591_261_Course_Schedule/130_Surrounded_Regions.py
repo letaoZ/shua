@@ -1,4 +1,6 @@
 class Solution:
+    ## requirement:         Do not return anything, modify board in-place instead.
+
     def solve(self, board:list[list[str]]) -> None:
 
         ## only none transferable ones are the ones on the boundary
@@ -33,7 +35,6 @@ class Solution:
             if board[M-1][i] == 'O':
                 searching(board,M-1,i,'N')## cannot connect
 
-        print(board)
         ## the rest can connect
         for i in range(M):
             for j in range(N):
@@ -44,7 +45,8 @@ class Solution:
                     board[i][j] = 'X'
 
 solu = Solution()        
-board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+board = [["X","O","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+board = [["O"]]
 solu.solve(board)
 
 print(board)
