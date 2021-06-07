@@ -19,8 +19,51 @@ Note:
 '''
 
 
-
+        ## Note:
+        ## the problem assume contiguous subarray prod > 0 and <k
 class Solution:
+
+    def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
+        ## most recent submission:
+        ## 2021-06-07
+        if k == 0:
+            return 0
+        sz = len(nums)
+        prod = 1
+        prev_prod = collections.deque([1])
+        res = 0
+        left_end = 0
+        nums = [1] + nums
+        i = 1
+        l = 0
+        while i<len(nums):
+            num = nums[i]
+            if num == 0:
+                # res += len(nums[i:])
+                nums =  [1] + nums[i+1:]
+                prod = 1
+                l = 0
+                i = 1
+                continue
+                
+            if num>k:
+                nums =  [1] + nums[i+1:]
+                prod = 1
+                l = 0
+                i = 1
+                continue
+            prod *= num
+
+            while l<i and prod>=k:
+                l += 1
+                prod /= nums[l]
+            res += i - l
+
+            
+
+            i += 1
+        return res
+
     def numSubarrayProductLessThanK_mem_consuming(self, nums: List[int], k: int) -> int:
         
         if k == 0:

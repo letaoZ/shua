@@ -46,6 +46,33 @@ n == dungeon[i].length
 List = list
 class Solution:
 
+    def calculateMinimumHP(self, grid: List[List[int]]) -> int:
+        ## most recent submission 2021-06-07
+        ## Time = O(MN), 
+        M, N = len(grid), len(grid[0])
+        
+        ## blood needed in each cell
+        
+        dp = [[0]*(N +1)for _ in range(M+1)]
+        
+        
+        ## adding pad
+        for i in range(N):
+            dp[M][i] = float('inf')
+        for i in range(M):
+            dp[i][N] = float('inf')
+        
+        dp[M][N] = dp[M][N-1] = dp[M-1][N] = 1
+
+        
+        for r in range(M-1,-1,-1):
+            for c in range(N-1,-1,-1):
+                # if r+1>=M or c+1>=N: continue
+                dp[r][c] =max(1,-grid[r][c] + min(dp[r+1][c],dp[r][c+1]))
+        # for r in dp:
+        #     print(r)
+        return dp[0][0]
+
     def calculateMinimumHP_formal_DP_bottomup(self, g: List[List[int]]) -> int:
         
         
