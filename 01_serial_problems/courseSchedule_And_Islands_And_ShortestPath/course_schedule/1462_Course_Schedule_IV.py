@@ -43,10 +43,50 @@ ui != vi
 
 '''
 
+import collections
+
+List = list()
 
 class Solution:
-    
-    def checkIfPrerequisite(self, n: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
+    def checkIfPrerequisite(
+        self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
+        ## most recent submission: 2021/06/08
+        g = collections.defaultdict(set)
+        cand = set()
+        for a, b in prerequisites:
+            g[b].add(a)
+            cand.add(a)
+            cand.add(b)
+            
+        adjmat = {a:{b:False for b in cand } for a in cand }
+        visited = [[0]*numCourses for _ in range(numCourses)]
+        for a,b in prerequisites:
+            adjmat[b][a] = True
+            
+        def searching(cand,frm,t,adjmat):
+            if visited[frm][t]:
+                return adjmat[frm][t]
+            visited[frm][t] = True
+            for k in cand:
+                if k==frm or k==t: continue
+                adjmat[frm][t] =(
+                    adjmat[frm][t] or 
+                    (searching(cand,frm,k,adjmat) and searching(cand,k,t,adjmat) )
+                )
+            return adjmat[frm][t] 
+        
+        
+        res =[False]*len(queries)
+        for ii, (t, frm) in enumerate(queries):
+            if t not in cand or frm not in cand:
+                res[ii] = False
+                continue
+            res[ii] = searching(cand,frm,t,adjmat)
+                
+            
+        return res
+
+    def checkIfPrerequisite_cache_ALL_path(self, n: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
     
         def searching(reachable,candidates):
             
