@@ -1,9 +1,11 @@
 Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Unnamed: 8,Unnamed: 9,Comments
-35,Search Insert Position,★★,34.0,704.0,981.0,,,,,upper_bound
-33,Search in Rotated Sorted Array,★★★,81.0,153.0,154.0,162.0,852.0,,,rotated / peak
+35,Search Insert Position,★★,34,704,981,,,,,upper_bound
+33,Search in Rotated Sorted Array,★★★,81,153,154,162,852,,,rotated / peak
 69,Sqrt(x),★★★,,,,,,,,upper_bound
 74,Search a 2D Matrix,★★★,,,,,,,,treat 2d as 1d
-875,Koko Eating Bananas,★★★,1011.0,,,,,,,guess ans and check
+875,Koko Eating Bananas,★★★,1011,,,,,,,guess ans and check
 4,Median of Two Sorted Arrays,★★★★,,,,,,,,
-378,Kth Smallest Element in a Sorted Matrix,★★★★,668.0,,,,,,,kth + matrix
-719,Find K-th Smallest Pair Distance,★★★★,786.0,,,,,,,kth + two pointers
+378,Kth Smallest Element in a Sorted Matrix,★★★★,668,,,,,,,kth + matrix
+719,Find K-th Smallest Pair Distance,★★★★,786,,,,,,,kth + two pointers
+,,,,,,,,,,
+658,Find K Closest Elements,★★★,,,,,,,,two pointers
