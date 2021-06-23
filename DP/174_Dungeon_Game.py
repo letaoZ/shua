@@ -43,7 +43,7 @@ n == dungeon[i].length
 
 
 ## important: blood later cannot help blood now!!!
-List = list
+List = list()
 class Solution:
 
     def calculateMinimumHP(self, grid: List[List[int]]) -> int:
