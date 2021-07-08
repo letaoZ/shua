@@ -1,0 +1,9 @@
+Onsite
+
+1. OO design. A game, with NxN grid. One person plays white and the other plays black;
+They take turns to place dot on the grid. Every time, they choose a column and the dot will fall till it hits a occupied dot or the boundary of the grid.
+If a person's color achieves 4 dots along a diagonal or a row, then the person wins.
+Note: it is important to determine the winning condition
+
+
+2. coinbase public API: https://api.pro.coinbase.com/products; https://api.pro.coinbase.com/products/BTC-USD/ticker
