@@ -1,0 +1,8 @@
+1. youtuber: traversy Media; Setting Up VSCode For Python Programming
+Install python
+Install autodoc
+Install Jupyter
+
+2. youtuber: Jack of Some. VSCode's python Interactive mode #%%
+import matplotlib.pyplot as plt
+%pylab inline
