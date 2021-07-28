@@ -40,6 +40,7 @@ Constraints:
 At most 2 * 105 calls will be made to get and put.
 
 '''
+    ## recently used!! SO, you don't need to count the number of times it is used
 
 import collections
 class LRUCache:
@@ -98,6 +99,9 @@ class LRUCache:
         self.previous[key] = 'H'
 
 
+
+
+
 class LRUCache_ordereddict:
 
     def __init__(self, capacity: int):
@@ -125,6 +129,103 @@ class LRUCache_ordereddict:
                 break
         self.cache[key] = value
 
+
+
+
+class Node:
+    def __init__(self, prev = None, nxt = None, key = None):
+        self.previous = prev
+        self.next = nxt
+        self.key = key
+
+
+class LRUCache_useNode:
+
+    def __init__(self, capacity: int):
+        
+        self.capacity = capacity
+        self.data = {}## key:value pair
+        self.nodes = { } ## key: node pair 
+        head = Node(None,None,'H')
+        tail = Node(None,None,'T')
+        head.next = tail
+        tail.previous = head
+        self.nodes['H'] = head
+        self.nodes['T'] = tail
+
+    def print_nodes(self):
+        node = self.nodes['H']
+        while node is not None:
+            print(node.key)
+            node = node.next
+
+    def get(self, key: int) -> int:
+        # print('get')
+        # print(key)
+        # print(self.data)
+        # (self.print_nodes())
+        if key in self.data:
+            val = self.data[key]
+            node = self.nodes[key]
+            nxt = node.next
+            prev = node.previous
+            
+            
+            prev.next = nxt
+            nxt.previous = prev
+            
+            node.next = self.nodes['H'].next
+            self.nodes['H'].next.previous = node
+            self.nodes['H'].next = node
+            node.previous = self.nodes['H']
+
+        else:
+            val =  -1
+        
+
+        return val
+    def put(self, key: int, value: int) -> None:
+        # print('put')
+        # print(key,value)
+        # print(self.data)
+        # (self.print_nodes())
+        # print('done')
+        if self.capacity == 0:
+            return 
+        if key in self.data:
+            self.get(key)
+            self.data[key] = value
+            return
+        if len(self.data) == self.capacity:
+            tail = self.nodes['T']
+            to_delete = tail.previous
+            # print(to_delete.key)
+            # print(to_delete.previous.key)
+            # print(to_delete.next.key)
+            to_delete.previous.next = tail
+            tail.previous = to_delete.previous
+            
+            del_key = to_delete.key
+            
+            del self.data[del_key]
+            del self.nodes[del_key]
+            
+        new_node=Node(None,None,key)
+        head = self.nodes['H']
+        new_node.next = head.next
+        new_node.previous = head
+        head.next.previous = new_node
+        head.next = new_node
+        self.data[key] = value
+        self.nodes[key] = new_node
+        # print(self.nodes.keys())
+        # self.print_nodes()
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
 # param_1 = obj.get(key)
