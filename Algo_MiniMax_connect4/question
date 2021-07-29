@@ -46,4 +46,11 @@ The examples below show the starting board, a board where white has won, and one
 |● ○ ● ○ ● ○ ●|
 |● ○ ○ ● ○ ○ ○|
  -------------
-In this lab you will create an AI Connect Four player.
+
+
+Steps:
+
+1. Use the bounded min-max algorithm to play Connect Four.
+1. Improve the efficiency of min-max by adding alpha-beta pruning.
+1. Create an informative static evaluation function for Connect Four.
+
