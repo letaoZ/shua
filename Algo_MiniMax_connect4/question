@@ -15,3 +15,35 @@ https://github-dotcom.gateway.web.tr/lsglucas/connect-four
 https://github.com/kupshah/Connect-Four
 
 https://github.com/erikackermann/Connect-Four
+
+
+A player who connects four of their pieces in a line (orthogonal or diagonal) wins. 
+The examples below show the starting board, a board where white has won, and one where black has won (winning connections highlighted in blue).
+
+ -------------
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+ -------------
+
+ -------------
+|· · · ● · · ·|
+|· · · ○ · · ·|
+|· · ● ● ○ · ·|
+|○ ● ○ ○ ● · ·|
+|● ○ ○ ○ ● · ·|
+|○ ○ ● ○ ● · ●|
+ -------------
+
+ -------------
+|● · ○ · ○ · ·|
+|● · ○ · ○ · ●|
+|● · ● ● ○ ● ●|
+|○ ● ○ ● ● ○ ○|
+|● ○ ● ○ ● ○ ●|
+|● ○ ○ ● ○ ○ ○|
+ -------------
+In this lab you will create an AI Connect Four player.
