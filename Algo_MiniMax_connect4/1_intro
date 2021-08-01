@@ -1,0 +1,42 @@
+
+Part 1 – Introduction
+https://github.com/PascalPons/connect4
+
+Connect Four game and rules
+Connect Four (or Four-in-a-line) is a two-player 
+strategy game played on a 7-column by 6-row board. 
+Each player has a color and drops succesively a disc 
+of his color in one column, the disc falls down to 
+the lowest empty cell of the column. 
+
+The first player to make an alignment of four discs 
+of his color wins, if the board is filled without 
+alignment it’s a draw game. More details on the game here.
+
+
+Solving Connect Four, an history.
+Connect Four is a strongly solved perfect information strategy 
+game: first player has a winning strategy whatever his opponent 
+plays. Initially, the game was first solved by James D. Allen 
+(October 1, 1988), and independently by Victor Allis two weeks 
+later (October 16, 1988). At this time, it was not yet feasible 
+to brute force completely the game. Both solutions are based on
+ rule based approaches in combination with knowledge database. 
+ James D. Allen’s strategy1 was later published in a more complete
+  book2, while Victor Allis’ solution was published in his thesis3.
+
+Later, with more computational power, 
+the game was strongly solved using brute force resolution. 
+John Tromp extensively solved the game and published in 1995 
+an opening database providing the outcome (win, loss, draw) of 
+any 8-ply position. John Tromp’s solver4 recently solved the 
+8x8 board in 2015.
+
+The final step in solving Connect Four is to compute the best 
+number of plies before the end of the game in addition to outcome 
+(win, loss, draw). GameCrafters from Berkely university provided 
+a first online solver5 computing the number of remaining moves to 
+perform the perfect strategy. As well as Christian Kollmann’s 
+solver build as student project in Graz University of Technology6. 
+
+
