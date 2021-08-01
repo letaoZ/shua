@@ -18,6 +18,7 @@ Algo notations:
     score < 0 means current player lose
     score = -1 means the opponent wins at its last move
     score = -2 means the opponent wins with its 2nd last move, etc.
+4. alpha-beta prunning: introduces a score window [alpha;beta' within which you search the actual score of  a position
 
 
 references:
