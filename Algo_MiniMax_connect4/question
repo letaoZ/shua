@@ -8,6 +8,7 @@ How to determine Minimax
 
 references:
 miniMax + alpha-beta prunning
+https://towardsdatascience.com/creating-the-perfect-connect-four-ai-bot-c165115557b0
 https://www.cs.swarthmore.edu/~bryce/cs63/s17/labs/03.html
 
 miniMax intro:
