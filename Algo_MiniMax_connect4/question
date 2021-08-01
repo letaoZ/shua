@@ -6,6 +6,20 @@ How to determine Minimax
     player 1 max = P1 current score - (player 2 seek max)
 
 
+
+Algo notations:
+1. from the left to the right: label columns of board: 1,2,3,4...
+2. Position notation: denote the sequence played by column label: 4 4 1 3. means play col 4, then col 4 then col 1 then col 3
+3. Position score: assume everyone plays optimally. 
+    score>0 means current player  can wine. 
+    score = 1 means current player wins with his last stone, 
+          =2 means he wins with opponent's second last stone
+    score = Null means game ends with draw
+    score < 0 means current player lose
+    score = -1 means the opponent wins at its last move
+    score = -2 means the opponent wins with its 2nd last move, etc.
+
+
 references:
 miniMax + alpha-beta prunning
 http://blog.gamesolver.org/
