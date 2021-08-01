@@ -2,9 +2,14 @@
 Hard
 
 
-Alice and Bob continue their games with piles of stones. There are several stones arranged in a row, and each stone has an associated value which is an integer given in the array stoneValue.
+Alice and Bob continue their games with piles of stones. 
+There are several stones arranged in a row, and each stone 
+has an associated value which is an integer given in the 
+array stoneValue.
 
-Alice and Bob take turns, with Alice starting first. On each player's turn, that player can take 1, 2 or 3 stones from the first remaining stones in the row.
+Alice and Bob take turns, with Alice starting first. 
+On each player's turn, that player can take 1, 2 or 3 stones 
+from the first remaining stones in the row.
 
 The score of each player is the sum of values of the stones taken. The score of each player is 0 initially.
 
@@ -47,6 +52,9 @@ Constraints:
 
 1 <= values.length <= 50000
 -1000 <= values[i] <= 1000
+
+pure computation without mem or dp: 3^sz time
+
 '''
 
 

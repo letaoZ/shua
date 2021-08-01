@@ -40,7 +40,43 @@ sum(piles) is odd.
 
 
 class Solution:
-    
+    def stoneGame_tricky(self, piles: List[int]) -> bool:
+        ## since sum(piles) is odd and len(piles) is even,
+        # sum of even indexed piles != sum of odd indexed piles
+        # so one of them is bigger
+        # Thus, the first person can always choose the right oddity to win
+        return True
+
+
+    def stoneGame_bottomup_1d_extra_mem(self, piles: List[int]) -> bool:
+        sz = len(piles)
+        ## dp[j]: at the Lth step piles[j-L, j], max diff between Alice and Bob
+        dp = [0]*sz 
+
+        ## initialize l = 1
+        for i in range(1,sz):
+            dp[i] = piles[i]
+        for L in range(2,sz):
+            tmp = [kk for kk in dp]
+            for j in range(L, sz):
+                dp[j] = max(piles[j-L] - tmp[j], piles[j] - tmp[j-1] )               
+        return dp[sz-1] > 0
+
+
+    def stoneGame_bottomup_1d(self, piles: List[int]) -> bool:
+        sz = len(piles)
+        ## dp[j]: at the Lth step piles[j-L, j], max diff between Alice and Bob
+        dp = [0]*sz 
+
+        ## initialize l = 1
+        for i in range(1,sz):
+            dp[i] = piles[i]
+        for L in range(2,sz):
+            for j in reversed(range(L, sz) ):
+                dp[j] = max(piles[j-L] - dp[j], piles[j] - dp[j-1] )               
+        return dp[sz-1] > 0
+
+
     def stoneGame_bottomup_2d(self, piles: List[int]) -> bool:
         ## with dp, time n^2
         
@@ -69,6 +105,11 @@ class Solution:
             if visited[i][j] >0:
                 return dp[i][j]
             visited[i][j] = 1
+
+            ## without dp, we can think of the speed as:
+            ##  S(i,j) = S(i-1,j)  + S(i,j-1) = 2S(i,j-1)
+            ## S(0,sz) = 2S(0,sz-1) =...= 2^sz
+            ## Thus, speed without dp = 2^sz
             dp[i][j] = max(
                 piles[i]-searching(piles,dp,i+1,j) ,
                 piles[j]-searching(piles,dp,i,j-1))

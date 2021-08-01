@@ -1,0 +1,12 @@
+Note:
+
+1. recursion without any dp. 
+    If every node (problem) can be broken into b sub branch
+         the max depth of the problem is d
+    Then the time complexity is (b^d)
+
+2. recursion with memo.
+    The time complexity is really JUST number of sub problem needs to be solved
+    e.g. there are M by N sub node/problem
+    Then the time complexity is M*N
+    

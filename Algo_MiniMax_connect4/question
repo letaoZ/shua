@@ -1,3 +1,11 @@
+How to determine Minimax
+
+1. Two players and both play "optimally!!"
+2. player 1 seek its max, and player 2 seek its max 
+3. Translate player1 seeks its max into: 
+    player 1 max = P1 current score - (player 2 seek max)
+
+
 references:
 miniMax + alpha-beta prunning
 https://www.cs.swarthmore.edu/~bryce/cs63/s17/labs/03.html
