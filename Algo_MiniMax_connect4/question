@@ -23,3 +23,42 @@ https://github-dotcom.gateway.web.tr/lsglucas/connect-four
 https://github.com/kupshah/Connect-Four
 
 https://github.com/erikackermann/Connect-Four
+
+
+A player who connects four of their pieces in a line (orthogonal or diagonal) wins. 
+The examples below show the starting board, a board where white has won, and one where black has won (winning connections highlighted in blue).
+
+ -------------
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+|· · · · · · ·|
+ -------------
+
+ -------------
+|· · · ● · · ·|
+|· · · ○ · · ·|
+|· · ● ● ○ · ·|
+|○ ● ○ ○ ● · ·|
+|● ○ ○ ○ ● · ·|
+|○ ○ ● ○ ● · ●|
+ -------------
+
+ -------------
+|● · ○ · ○ · ·|
+|● · ○ · ○ · ●|
+|● · ● ● ○ ● ●|
+|○ ● ○ ● ● ○ ○|
+|● ○ ● ○ ● ○ ●|
+|● ○ ○ ● ○ ○ ○|
+ -------------
+
+
+Steps:
+
+1. Use the bounded min-max algorithm to play Connect Four.
+1. Improve the efficiency of min-max by adding alpha-beta pruning.
+1. Create an informative static evaluation function for Connect Four.
+
