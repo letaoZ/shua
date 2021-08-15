@@ -42,14 +42,13 @@ Constraints:
 '''
 
 class Solution:
-    
-    
     def winnerSquareGame(self, n: int) -> bool:
         dp = [-1]*(n+1)
         dp[0] = 0
         for num in range(0, n+1):
             
-            ## if with num many stones left means win, then the extra j^2 means the other person
+            ## if with num many stones left means win, 
+            # then the extra j^2 means the other person
             ## took the last stone
             
             ## Try all possible square numbers and see whether the other player 
