@@ -29,3 +29,10 @@ DONE,741,Cherry Pickup,★★★★,147,1463,64,,,,"I: O(n^2), S = O(n^3), T = O
 DONE,546,Remove Boxes,★★★★★,312,488,,,,,"I: O(n), S = O(n^3), T = O(n^4)"
 DONE,943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,996,1125 (knapsack),,,,"I: O(n)
 S = O(n*2^n), T = (n^2*2^n)"
+,,,,,,,,,,
+,Leetcode DP,7 days ,,,,,,,,
+DAY1,509,Fibonacci Number,★,,,,,,,
+DAY1,1137,N-th Tribonacci Number,★,,,,,,,
+DAY2,70,Climbing Stairs,★,,,,,,,
+DAY2,746,Min Cost Climbing Stairs,★,,,,,,,
+DAY3,198,House Robber,★★,,,,,,,
