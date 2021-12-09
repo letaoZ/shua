@@ -1,5 +1,4 @@
 Note:
-cannot shua
 1. recursion without any dp. 
     If every node (problem) can be broken into b sub branch
          the max depth of the problem is d

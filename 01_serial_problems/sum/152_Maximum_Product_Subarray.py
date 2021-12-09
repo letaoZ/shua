@@ -125,8 +125,7 @@ class Solution:
             if num<0:
                 min_prod, max_prod = max_prod, min_prod
                 
-        # Not, include the num here is to deal with previous prods are zeros. So this case we will initiate a partial prod
-        ## starting at num
+        # Note: min_prod is the min/max product INCLUDING the current NUM!!! 
             min_prod = min(min_prod*num ,num )
             max_prod = max(max_prod*num ,num )
         ## update global res
