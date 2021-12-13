@@ -1,0 +1,1 @@
+always use: mid = l + (r-l)//2
