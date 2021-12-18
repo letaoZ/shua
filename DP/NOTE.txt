@@ -9,3 +9,6 @@ Note:
     e.g. there are M by N sub node/problem
     Then the time complexity is M*N
     
+3. 动态规划算法本质上就是穷举「状态」，然后在「选择」中选择最优解。
+    明确 base case -> 明确「状态」-> 明确「选择」 -> 定义 dp 数组/函数的含义。
+
