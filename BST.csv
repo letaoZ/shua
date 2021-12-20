@@ -1,8 +1,15 @@
 Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Comments
-98,Validate Binary Search Tree,★★,530.0,,,,,inorder
-700,Search in a Binary Search Tree,★★,701.0,,,,,binary search
+98,Validate Binary Search Tree,★★,530,,,,,inorder
+700,Search in a Binary Search Tree,★★,701,,,,,binary search
 230,Kth Smallest Element in a BST,★★★,,,,,,inorder
 99,Recover Binary Search Tree,★★★,,,,,,inorder
 108,Convert Sorted Array to Binary Search Tree,★★★,,,,,,build BST
 501,Find Mode in Binary Search Tree,★★★,,,,,,inorder
 450,Delete Node in a BST,★★★★,,,,,,binary search
+,,,,,,,,
+,,,,,,,,
+,Leetcode Algorithm II,7 days ,,,,,,
+DAY1,Binary Search,,,,,,,
+34,Find First and Last Position of Element in Sorted Array,,,,,,,
+33,33. Search in Rotated Sorted Array,redo!,,,,,,
+74,74. Search a 2D Matrix,,,,,,,
