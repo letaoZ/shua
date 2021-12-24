@@ -19,7 +19,7 @@ T = O(mn*min(n,m))"
 ,688,Knight Probability in Chessboard,★★★,576,935,,,,,"I: O(mn) + k
 S = O(kmn), T = O(kmn)"
 started,322(done),Coin Change (knapsack),★★★,377(done),416 (knapsack),494,1043,1049(DONE),,"I: O(n) + k, S = O(n), T = O(kn)"
-,,,,1220,1230,1262,1269,,,
+,,,,1220,1230,1262,1269,518(DONE),,
 ,813,Largest Sum of Averages,★★★★,1278,1335,410,,,,"I: O(n) + k
 S = O(n*k), T = O(kn^2)"
 ,1223,Dice Roll Simulation,★★★★,,,,,,,"I: O(n) + k + p
@@ -69,5 +69,7 @@ DAY18,300,Longest Increasing Subsequence,★★,,,,,,,
 DAY18,376,Wiggle Subsequnce,★★,binary search,,,,,,
 DAY19,392,Is Subsequence,★★,binary search,,,,,,
 ,,,,,,,,,,
-DAY20,322,Coin Change,★★,,,,,,,
-DAY20,518,Coin Change II,★★,,,,,,,
+DAY20,322,Coin Change,★★,knapsack,,,,,,
+DAY20,518,Coin Change II,★★,knapsack,,,,,,
+DAY21,377,Combination Sum IV,★★,knapsack,,,,,,
+DAY21,343,Integer Break,★★,knapsack,,,,,,
