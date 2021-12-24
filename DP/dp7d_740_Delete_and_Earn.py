@@ -40,24 +40,23 @@ Constraints:
 1 <= nums.length <= 2 * 104
 1 <= nums[i] <= 104
 '''
-
-
-import pprint
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         
-        ## we cannot take adjacent values
-        
-        nums_new = [0]*(max(nums)+1)
+        new_nums = [0]*(max(nums) + 1)
         for k in nums:
-            nums_new[k] += k 
-        
-        ## dp[k] max sum you get if we look at nums_new[:k]
-        dp = [0]*( len(nums_new)+1)
-        
-        dp[1] = nums_new[0]
-        
-        for k in range(2,len(nums_new)+1):
-            dp[k] = max(dp[k-1], dp[k-2] + nums_new[k-1] )
+            new_nums[k] += k
             
-        return dp[-1]
+        ## eg nums = [1,1,1,5,3,4,4] 
+        ## new nums is of len 6 =[0,1*3,2*0,3*1,2*4,1*5]
+        ## so we are computing max sum of subsequence that doesn't take adjacent values
+        
+        N = len(new_nums)
+        
+        ## dp[K]:= using nums[:K], max non adjacent sum
+        dp = [0]*(N+1)
+        
+        for K in range(1,N+1):
+            dp[K] = max(dp[K-1], dp[K-2]+new_nums[K-1])
+            
+        return dp[N]
