@@ -40,6 +40,7 @@ nums is a non-decreasing array.
 
 '''
 
+
 class Solution:
     def searchRange_N(self, nums: List[int], target: int) -> List[int]:
         l, r = 0, len(nums) - 1
@@ -67,39 +68,47 @@ class Solution:
             r += 1
             
         return [l+1, r-1]
-    
+
     def searchRange(self, nums: List[int], target: int) -> List[int]:
+        print("searching")
         l, r = 0, len(nums) - 1
         
         if r == -1:
             return [-1, -1]
        
-    
-        def searching(nums, l, r, target, lower_bound = True):
-            
+        
+        def searching(nums, target, left_bound = True):
+            l, r = 0, len(nums)-1
             while l<=r:
-                mid = l + (r-l)//2
+                mid = l + (r-l) // 2
                 
-                if nums[mid] == target:
-                    if lower_bound:
-                        if  mid == l or nums[mid-1]<target:
-                            return mid
-                        r -= 1 
-                    elif not lower_bound:
-                        if mid == r or nums[mid+1]>target:
-                            return mid
-                        l += 1
+                if nums[mid] > target:
+                    r = mid-1
                 elif nums[mid] < target:
                     l = mid + 1
-                elif nums[mid] > target:
-                    r = mid - 1
-                    
-            return -1
+                elif nums[mid] == target:
+                    if left_bound:
+                        if mid == 0 or nums[mid-1] < target:
+                            return mid
+                        else:
+                            r = mid - 1
+                    elif not left_bound:
+                        if mid == len(nums)-1 or nums[mid+1] > target:
+                            return mid
+                        else:
+                            l = mid + 1
+                            
+            if l >= len(nums) or nums[l]!=target:
+                print(f"left_bound = {left_bound}, {l}")
+                return -1
+            return l
         
-        lower_bound = searching(nums, 0, len(nums)-1, target,True)
-        if lower_bound!=-1:
-            upper_bound = searching(nums, 0, len(nums)-1, target,False)
-        else:
-            upper_bound = -1
-            
-        return [lower_bound, upper_bound]
+        
+        left_bound = searching(nums, target, left_bound = True)
+        right_bound = -1
+        if left_bound != -1:
+            right_bound = searching(nums[left_bound:],target, left_bound = False )
+            right_bound += left_bound
+        return [left_bound, right_bound]
+                        
+    
