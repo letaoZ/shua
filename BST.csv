@@ -6,7 +6,7 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,
 108,Convert Sorted Array to Binary Search Tree,★★★,,,,,,build BST
 501,Find Mode in Binary Search Tree,★★★,,,,,,inorder
 450,Delete Node in a BST,★★★★,,,,,,binary search
-1231, Divide Chocolate,★★★,410,875,1011,1201,,
+(Done) 1231, Divide Chocolate,★★★,(DONE) 410,(DONE) 875,1011,1201,,
 ,,,,,,,,
 ,Leetcode Algorithm II,7 days ,,,,,,
 DAY1,Binary Search,,,,,,,
