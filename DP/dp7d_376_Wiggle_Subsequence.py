@@ -45,28 +45,53 @@ Constraints:
 Follow up: Could you solve this in O(n) time?
 '''
 
-class Solution:
-    def wiggleMaxLength(self, nums: List[int]) -> int:
-        
-        N = len(nums)
-        if N<=1:
-            return N
-        
-        ## dp_pos[i]: longest subsequence including nums[i], ends with diff +
-        ## dp_ngt[i]: longest subsequence including nums[i], ends with diff -
 
-        dp_pos = [0]*N
-        dp_ngt = [0]*N
+
+class Solution:
+    def wiggleMaxLength_n_2(self, nums: List[int]) -> int:
         
-        dp_pos[0] = dp_ngt[0] = 1
-        
-        for i in range(1, N):
-            for k in range(i):
-                if nums[k]<nums[i]:
-                    dp_pos[i] = max(dp_pos[i], 1+dp_ngt[k])
-                    dp_ngt[i] = max(dp_ngt[i], dp_ngt[k])
-                if nums[k]>nums[i]:
-                    dp_ngt[i] = max(dp_ngt[i], 1+dp_pos[k])
-                    dp_pos[i] = max(dp_pos[i], dp_pos[k])
+        if len(nums)<=1:
+            return len(nums)
+        ## pos_dp[n] := ending with nums[n], longest possible wiggle sequence that having + as the last sign
+        ## neg_dp[n] := ending with nums[n], longest possible wiggle sequence that having - as the last sign
+        pos_dp = [0]*(len(nums))
+        neg_dp = [0]*(len(nums))
+        pos_dp[0] = neg_dp[0] = 1
+        res = 1
+        for n in range(1,len(nums)):      
+            for k in range(0,n):
+                if nums[n]>nums[k]:
+                    pos_dp[n] = max(pos_dp[n], neg_dp[k] + 1)
+                if nums[n]<nums[k]:
+                    neg_dp[n] = max(neg_dp[n], pos_dp[k] + 1)
                     
-        return max(max(dp_pos), max(dp_ngt))
+                    
+            res = max(res, neg_dp[n], pos_dp[n]) 
+                    
+        return res
+    
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        ## O(N)
+        if len(nums)<=1:
+            return len(nums)
+        ## pos_dp[n] := longest possible wiggle sequence that having + as the last sign in nums[...n]
+        ## neg_dp[n] := longest possible wiggle sequence that having - as the last sign in nums[...n]
+        pos_dp = [0]*(len(nums))
+        neg_dp = [0]*(len(nums))
+        pos_dp[0] = neg_dp[0] = 1
+        res = 1
+        for n in range(1,len(nums)):      
+
+            if nums[n]>nums[n-1]:
+                pos_dp[n] = max(pos_dp[n], neg_dp[n-1] + 1)
+                neg_dp[n] = neg_dp[n-1]
+            elif nums[n]<nums[n-1]:
+                neg_dp[n] = max(neg_dp[n], pos_dp[n-1] + 1)
+                pos_dp[n] = pos_dp[n-1]
+            elif nums[n]==nums[n-1]:
+                pos_dp[n] = pos_dp[n-1]
+                neg_dp[n] = neg_dp[n-1]
+
+            res = max(res, neg_dp[n], pos_dp[n]) 
+                    
+        return res

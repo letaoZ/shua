@@ -25,30 +25,32 @@ Explanation: There are three ways to climb to the top.
 
 
 class Solution:
-    def climbStairs0(self, n: int) -> int:
+    
+    def minCostClimbingStairs_Mem_N(self, cost: List[int]) -> int:
+        
+        ## dp[i]:=min cost to arrive cost[i]
+        ## NOTE: we will return min(dp[-1],dp[-2]) 
+        ## because we can reach the top either jumping from the last or the 2nd from the last position
+        
+        N = len(cost)
+        dp = [float('inf')]*(N)
+        dp[0] = cost[0]
+        dp[1] = cost[1]
+        for i in range(2,N):
+            dp[i] = min(dp[i-1],dp[i-2])  + cost[i]
+            
+        return min(dp[-2],dp[-1])
+    
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        
+        ## dp[i]:=min cost to arrive cost[i]
+        ## NOTE: we will return min(dp[-1],dp[-2]) 
+        ## because we can reach the top either jumping from the last or the 2nd from the last position
         
         
-        ## s(N) = s(N-1) + S(N-2)
-        ## dp[i] := reaching steps i, number of ways      
-        
-        dp = [0]*(n+1)
-        dp[0] = dp[1] = 1
-        for k in range(2, n+1):
-            dp[k] = dp[k-1] + dp[k-2]
-        
-        return dp[-1]
-        
-    def climbStairs(self, n: int) -> int:
-        
-        
-        ## s(N) = s(N-1) + S(N-2)
-        ## dp[i] := reaching steps i, number of ways       
-        ## only need previous two values and no need for extra storage
-        n0, n1 = 1, 1
-        
-        while n>=2:
-            n0 = n0 + n1
-            n0, n1 = n1, n0
-            n -= 1
-        
-        return n1
+        dp0 = cost[0]
+        dp1 = cost[1]
+        for i in range(2,len(cost)):
+            dp_new = min(dp0,dp1)  + cost[i]
+            dp0, dp1 = dp1, dp_new
+        return min(dp0, dp1)
