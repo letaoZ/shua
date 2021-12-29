@@ -6,8 +6,8 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,
 108,Convert Sorted Array to Binary Search Tree,★★★,,,,,,build BST
 501,Find Mode in Binary Search Tree,★★★,,,,,,inorder
 450,Delete Node in a BST,★★★★,,,,,,binary search
-(Done) 1231, Divide Chocolate,★★★,(DONE) 410,(DONE) 875,1011,1283,1482,
-,,,774,410,,,,
+(Done) 1231, Divide Chocolate,★★★,(DONE) 410,(DONE) 875,(DONE) 1011,(DONE) 1283,(DONE) 1482,
+,,,(DONE) 774,410,,,,
 ,Leetcode Algorithm II,7 days ,,,,,,
 DAY1,Binary Search,,,,,,,
 34,Find First and Last Position of Element in Sorted Array,,,,,,,

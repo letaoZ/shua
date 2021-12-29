@@ -22,8 +22,6 @@ Output: 4
 Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
 Total amount you can rob = 1 + 3 = 4.
 '''
-
-
 class Solution:
     def rob0(self, nums: List[int]) -> int:
         ## dp[k] max amount of money you can get if there are k houses
@@ -56,3 +54,22 @@ class Solution:
             dp[i] = max(dp[i-2] + nums[i], dp[i-1])
             
         return dp[-1]            
+    
+    def rob_const_mem(self, nums: List[int]) -> int:
+        
+        
+        if len(nums) <= 2:
+            return max(nums)
+        
+        ## max you get rob 2 house ago, max you get rob 1 house ago
+        d0, d1 = nums[0], max(nums[0], nums[1])
+        ## dp[k] = max(dp[k-1], dp[k-2] + nums[k]), max you get robbing first k houses 
+        
+        res = d0
+        for k in range(2,len(nums)):
+            dtmp = max(d1, d0+nums[k])
+            res = max(res, dtmp)
+            d0, d1 = d1, dtmp
+            print(d0,d1)
+
+        return res

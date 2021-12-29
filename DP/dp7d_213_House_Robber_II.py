@@ -69,3 +69,31 @@ class Solution:
         res2 = dp[N]
         
         return max(res1, res2)
+
+
+    def rob(self, nums: List[int]) -> int:
+        ## consider run rob twice
+        ## one starts with nums[0], then you can ONLY end with nums[-2]
+        ## the other starts with nums[1], then you can end with nums[-1]
+        
+        ## two days ago, vs on day ago max
+        if len(nums)<=3:
+            return max(nums)
+        
+        
+        dp0, dp1 = nums[0], max(nums[0:2])
+        
+        dp0, dp1 = dp1, max(dp0+nums[2], dp1)
+        dpt0, dpt1 = nums[1], max(nums[1:3])
+        res = max(dp1,dpt1)
+        for n in range(3,len(nums)-1):
+            dp_tmp = max(dp0+nums[n],dp1)
+            dpt_tmp = max(dpt0+nums[n],dpt1)
+            dp0, dp1 = dp1, dp_tmp
+            dpt0, dpt1 = dpt1, dpt_tmp
+            res = max(dp1,dpt1)
+
+        dpt_tmp = max(dpt0+nums[-1],dpt1)
+            
+        res = max(res, dpt_tmp)            
+        return res

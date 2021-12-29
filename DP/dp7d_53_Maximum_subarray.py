@@ -40,6 +40,7 @@ Constraints:
 Follow up: If you have figured out the O(n) solution, 
 try coding another solution using the divide and conquer approach, which is more subtle.
 '''
+
 class Solution:
     def maxSubArray_brutal(self, nums: List[int]) -> int:
         '''psum[i][j]: sum of nums[i:j]'''
@@ -92,7 +93,7 @@ class Solution:
 
         def divide_conquer(nums,l,r):
             if l>r:
-                return nums[0]
+                return -float('inf')
         
             mid = l + (r-l)//2
             
@@ -119,3 +120,16 @@ class Solution:
             return max(lsum, rsum, midsum)
         
         return divide_conquer(nums,0,len(nums)-1)
+    
+    def maxSubArray(self, nums: List[int]) -> int:
+        res = -float('inf')
+    
+    
+        psum = 0
+        for n in nums:
+            psum += n
+            res = max(psum, res)
+            if psum<0:
+                psum = 0
+                
+        return res

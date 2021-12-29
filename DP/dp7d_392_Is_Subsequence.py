@@ -72,4 +72,29 @@ class Solution:
         ## time complexity
         ## len(s)*len(t)
         return searching(s,t)
-            
+
+    def isSubsequence_dp(self, s: str, t: str) -> bool:
+        if len(s) > len(t) or not set(s).issubset(set(t)):
+            return False
+        if s in t:
+            return True
+        ## dp[i][j] := s[i...] is a subset of t[j...]?
+        
+        dp = [[False]*len(t) for _ in range(len(s))]
+        dp[len(s)-1][len(t)-1] = (s[-1] == t[-1])
+        ## time complexity
+        ## len(s)*len(t)
+
+        for i in range(len(s)-1,-1,-1):
+            for j in range(len(t)-1,-1,-1):
+                if len(t[j:])<len(s[i:]):
+                    continue
+                if s[i] == t[j]:
+                    dp[i][j] = True if i+1 == len(s) else dp[i+1][j+1]
+                    continue
+                if j+1 != len(t):
+                    dp[i][j] = dp[i][j+1]
+            if not dp[i][0]:
+                return False
+                    
+        return dp[0][0]
