@@ -40,7 +40,7 @@ queries[i].length == 2
 1 <= queries[i][1] <= 3'''
 
 class Solution:
-    def shortestDistanceColor(self, colors: List[int], queries: List[List[int]]) -> List[int]:
+    def shortestDistanceColor_brutal(self, colors: List[int], queries: List[List[int]]) -> List[int]:
         
         res = [-1]*len(queries)
         res_d = {(a,b):None for a,b in queries}
@@ -68,3 +68,44 @@ class Solution:
             
         return res
                     
+    def shortestDistanceColor_scan_first(self, colors: List[int], queries: List[List[int]]) -> List[int]:
+        ##dp_left[c][idx]: for each index, look at its left: the nearest distance color C
+        ## define dp_right similarly
+        
+        dp_left = [[-1]*len(colors) for _ in range(3+1)]
+        dp_right = [[-1]*len(colors) for _ in range(3+1)]
+        
+        for C in [1,2,3]:
+            for idx in range(len(colors)):
+                ic = colors[idx]
+                if C == ic:
+                    dp_left[C][idx] = 0
+                else:
+                    if idx>0 and dp_left[C][idx-1]>=0:
+                        dp_left[C][idx] = dp_left[C][idx-1] + 1
+                    
+                    
+
+        for C in [1,2,3]:
+            for idx in range(len(colors)-1,-1,-1):
+                ic = colors[idx]
+                if C == ic:
+                    dp_right[C][idx] = 0
+                else:
+                    if idx<len(colors)-1 and dp_right[C][idx+1]>=0:
+                        dp_right[C][idx] = dp_right[C][idx+1] + 1
+                        
+        # print(dp_left[1])
+        # print(dp_right[1])
+        ## for each query, we can find its left and right dist
+        res = [-1]*len(queries)
+        for k,(idx,ic) in enumerate(queries):
+            left_d = dp_left[ic][idx] 
+            right_d = dp_right[ic][idx] 
+            if left_d == -1 or right_d == -1:
+                res[k] = max(right_d, left_d) 
+            else:
+                res[k] = min(right_d, left_d)
+            
+            
+        return res
