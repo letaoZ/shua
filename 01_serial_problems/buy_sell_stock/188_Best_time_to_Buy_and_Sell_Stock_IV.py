@@ -78,3 +78,39 @@ class Solution:
 
         res = max([dp[T-1][k][0] for k in range(K+1)])
         return res
+
+    def maxProfit_cleaned_version(self, k: int, prices: List[int]) -> int:
+        if k==0 or len(prices) == 0:
+            return 0
+        
+        if len(prices) <= 2:
+            return max(prices[-1] - prices[0], 0)
+        
+        ## k is at most len(prices)//2 many
+        k = min(k, len(prices)//2)
+        
+        ## dp[i][l][0] := max profit you get: while using prices[:i], with at most l transactions left, holding 0 shares
+        ## dp[i][l][1] := max profit you get: while using prices[:i], with at most l transactions left, holding 1 shares
+        
+        
+        ## dp[i][l][1] = max(dp[i-1][l][1],dp[i-1][l][0]-prices[i])
+        ## dp[i][l][0] = max(dp[i-1][l][0],dp[i-1][l+1][1]+prices[i]), here we consumed one transactions on day i, so the days before you need more available transactions than today
+        
+        dp = [ [ [-float('inf'), -float('inf')] for _ in range(k+1)]for _ in range(len(prices))]
+        
+        ## on day 0 special cases
+        for l in range(k+1):
+            dp[0][l][0] = 0
+            dp[0][l][1] = -prices[0]
+            
+            
+        for i in range(1,len(prices)):
+            dp[i][k][0] = dp[i-1][k][0] ## if you have max k transaction left, then there is NO space for completing a transaction
+            dp[i][k][1] = max(dp[i-1][k][1],dp[i-1][k][0]-prices[i])
+            for l in range(k):
+                dp[i][l][1] = max(dp[i-1][l][1],dp[i-1][l][0]-prices[i])
+                dp[i][l][0] = max(dp[i-1][l][0],dp[i-1][l+1][1]+prices[i])
+                
+        # res = max([dp[len(prices)-1][l][0] for l in range(k+1)])
+        res = dp[len(prices)-1][0][0]
+        return res
