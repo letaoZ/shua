@@ -1,0 +1,63 @@
+Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Comments
+35,Search Insert Position,★★,34,704,981,,,upper_bound
+33,Search in Rotated Sorted Array,★★★,81,153,154,162,852,rotated / peak
+69,Sqrt(x),★★★,,,,,,upper_bound
+74,Search a 2D Matrix,★★★,,,,,,treat 2d as 1d
+875,Koko Eating Bananas,★★★,1011,,,,,guess ans and check
+4,Median of Two Sorted Arrays,★★★★,,,,,,
+378,Kth Smallest Element in a Sorted Matrix,★★★★,668,,,,,kth + matrix
+719,Find K-th Smallest Pair Distance,★★★★,786,,,,,kth + two pointers
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,(DONE) 774,410,,,,
+,,,,,,,,
+,,,,,,,,
+Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,
+11,Container With Most Water,★★,42,,,,,two points
+125,Valid Palindrome,★★,455,,,,,two points
+917,Reverse Only Letters,★★,925,986,855,,,two points
+167,Two Sum II - Input array is sorted,★★★,15,16,,,,two points
+977,Squares of a Sorted Array,★★,,,,,,two points
+992,Subarrays with K Different Integers,★★★★,,,,,,two points
+658,Find K Closest Elements,★★★,,,,,,two pointers
+42,Trapping Rain Water,,11,1868,,,,two pointers+min/max_trick
+(Done) 1231, Divide Chocolate,★★★,(DONE) 410,(DONE) 875,(DONE) 1011,(DONE) 1283,(DONE) 1482,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,Leetcode Algorithm II,7 days ,,,,,,
+DAY1,Binary Search,,,,,,,
+34,Find First and Last Position of Element in Sorted Array,★,,,,,,
+33,Search in Rotated Sorted Array,★,,,,,,
+74,Search a 2D Matrix,★,,,,,,
+DAY2,Binary Search,,,,,,,
+153, Find Minimum in Rotated Sorted Array,★★,,,,,,
+162,Find Peak Element,★★,,,,,,
+,,,,,,,,
+,,,,,,,,
+,Leetcode Algorithm III,7 days ,,,,,,
+DAY1,Binary Search,,,,,,,
+1060,Missing Element in Sorted Array,★★★,,,,,,
+1901,Find a Peak Element II,★★★,redo!,,,,,
+DAY2,Binary Search,,,,,,,
+1231, Divide Chocolate,★★★,,,,,,
+1182,Shortest Distance to Target Color,★★★,redo!,,,,,
+DAY3,Two points,,,,,,,
+1229, Meeting Scheduler,★★,two points,,,,,
+287, Find the Duplicate Number,★★,binary search,,,,,
+DAY4,Two points,,,,,,,
+1868,Product of Two Run-Length Encoded Arrays,,,,,,,
+42,Trapping Rain Water,,,,,,,
