@@ -46,3 +46,43 @@ class Solution:
             if res_l == N:
                 return res
         return res
+
+
+    def longestPalindrome_slower(self, s: str) -> str:
+        
+        if len(s) <= 1:
+            return s
+        
+        max_length = 1
+        res = s[0]
+        for mid in range(len(s)):
+            
+            ## odd length
+            L = 1
+            l, r = mid-1, mid+1
+            while l>=0 and r <len(s):
+                if s[l] == s[r]:
+                    L += 2
+                    l -= 1
+                    r += 1
+                else:
+                    break
+            if L>max_length:
+                res = s[l+1:r]
+                max_length = L
+            
+            if mid+1<len(s) and s[mid] == s[mid+1]:
+                L = 2
+                l, r = mid-1, mid+2
+                while l>=0 and r <len(s):
+                    if s[l] == s[r]:
+                        L += 2
+                        l -= 1
+                        r += 1
+                    else:
+                        break
+                if L>max_length:
+                    res = s[l+1:r]
+                    max_length = L
+        return res
+                        

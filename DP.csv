@@ -84,3 +84,5 @@ DAY6,1746,Maximum Subarray Sum After One Operation,★★,two pointerish as well
 DAY6,1230,Toss Strange Coins,★★,,,,,,,
 DAY8,712,Minimum ASCII Delete Sum for Two Strings,★★,,,,,,,
 DAY10,368,Largest Divisible Subset,★★,646. Maximum Length of Pair Chain,,,,,,
+DAY11,647,Palindromic Substrings,★★,string,,,,,,
+DAY12,1055,Shortest Way to Form String,★★,string,,,,,,
