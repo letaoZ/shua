@@ -51,3 +51,18 @@ class Solution:
                                min(dp[i-1][j],dp[i][j-1]) + grid[i][j])
                 
         return dp[m-1][n-1]
+
+    def minPathSum_mem_reduce(self, grid: List[List[int]]) -> int:
+        
+        m,n = len(grid), len(grid[0])
+        
+        ## dp[i][j] := min sum to reach grid[i][j]
+        #  dp[i][j] = min(dp[i-1][j],dp[i][j-1]) + grid[i][j]
+        #  we can add an extra column and row of value inf to handle out of bound index
+        
+        dp = [float('inf')]*(n+1) 
+        dp[0] = 0
+        for i in range(m):
+            for j in range(n):
+                dp[j] = min(dp[j],dp[j-1]) + grid[i][j]
+        return dp[n-1]
