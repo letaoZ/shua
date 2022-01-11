@@ -28,7 +28,7 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 542,01 Matrix,★★★,675,934,,,BFS
 698,Partition to K Equal Sum Subsets,★★★,93,131,241,,Partition
 ,,,842,282,,,
-,,,,,,,
+1368, Minimum Cost to Make at Least One Valid Path in a Grid,★★★,,,,,Both bfs and dfs! Interesting!
 ,,,,,,,
 ,,,,,,,
 ,,,,,,,
@@ -40,3 +40,4 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 368,Largest Divisible Subset,★★,,,,,Two queue
 582,_Kill_Process,★★,,,,,
 752,Open the Lock,★★,,,,,
+1319, Number of Operations to Make Network Connected,★★,,,,,"edges in a tree, connected components"
