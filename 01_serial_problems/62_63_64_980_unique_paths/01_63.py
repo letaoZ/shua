@@ -37,6 +37,46 @@ obstacleGrid[i][j] is 0 or 1.
 
 '''
 class Solution:
+    def uniquePathsWithObstacles_1d_bottomup(self, obstacleGrid: List[List[int]]) -> int:
+        
+        if obstacleGrid[0][0] or obstacleGrid[-1][-1]:
+            return 0
+        
+        m, n = len(obstacleGrid), len(obstacleGrid[0]) 
+        dp = [0]*(n+1) 
+        dp[0] = 1
+        
+        for i in range(m):
+            for j in range(n):
+                if obstacleGrid[i][j]:
+                    dp[j] = 0
+                else:
+                    dp[j] += (dp[j-1])                                         
+                
+        return dp[n-1]
+        
+        
+    def uniquePathsWithObstacles_2d_bottomup(self, obstacleGrid: List[List[int]]) -> int:
+        
+        
+        ## dp[i][j] := num of ways to reach (i,j)
+        ## if obstacleGrid[i][j] == 1, dp[i][j] = 0
+        if obstacleGrid[-1][-1] or obstacleGrid[0][0]:
+            return 0
+        m = len(obstacleGrid)
+        n = len(obstacleGrid[0])
+        dp = [[0]*(n+1) for _ in range(m+1)]
+        dp[0][0] = 1
+        
+        for i in range(m):
+            for j in range(n):
+                if obstacleGrid[i][j]:
+                    continue
+                
+                dp[i][j] += (dp[i-1][j] + dp[i][j-1])                                         
+        
+        
+        return dp[m-1][n-1]
     ## time = O(mn), space = O(mn)
     def uniquePathsWithObstacles_dp_recurr(self, obstacleGrid: List[List[int]]) -> int:
         def searching(i,j,m,n,obstacleGrid):

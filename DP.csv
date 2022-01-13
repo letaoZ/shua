@@ -7,7 +7,7 @@ started,62(done),Unique Paths,★★,63 (done),64,120,174,931,,"I: O(mn), S = O(
 ,85,Maximal Rectangle,★★★,221,304,1277,,,,
 ,198,House Robber,★★★,213,309,740,790,801,,"I: O(n), S = O(3n), T = O(3n)"
 ,279,Perfect Squares,★★★,,,,,,,"I: n, S = O(n), T = O(n*sqrt(n))"
-,139,Word Break,★★★,140,818,,,,,"I: O(n), S = O(n), T = O(n^2)"
+,139 (DONE),Word Break,★★★,140,818,,,,,"I: O(n), S = O(n), T = O(n^2)"
 ,300,Longest Increasing Subsequence,★★★,(DONE) 673, (DONE) 1048,,,,,
 ,96,Unique Binary Search Trees,★★★,,,,,,,
 ,1105,Filling Bookcase Shelves,★★★,,,,,,,"I: O(n) + t, S = O(n), T = O(n^2)"

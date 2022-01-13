@@ -42,6 +42,31 @@ s and wordDict[i] consist of only lowercase English letters.
 All the strings of wordDict are unique.'''
 
 class Solution:
+    def wordBreak_my_solution(self, s: str, wordDict: List[str]) -> bool:
+        if not wordDict:
+            return len(s) == 0
+        
+        wordDict = set(wordDict)
+        
+        
+        ## dp[j] := if s[..j] can be represented as a wordDict
+        N = len(s)
+        dp = [False]*N
+        
+        ## idx: before the idx, the word can be represented
+        representable_indices = []
+        
+        for i in range(N):
+            if s[:i+1] in wordDict:
+                dp[i] = True
+                representable_indices.append(i+1)
+            else:
+                for j in representable_indices:
+                    if s[j:i+1] in wordDict:
+                        dp[i] = True
+                        representable_indices.append(i+1)
+                        break
+            
     def wordBreak_slow(self, s: str, wordDict: List[str]) -> bool:
         if not wordDict:
             return len(s) == 0

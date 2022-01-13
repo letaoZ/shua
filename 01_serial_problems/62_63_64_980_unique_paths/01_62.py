@@ -43,7 +43,33 @@ It's guaranteed that the answer will be less than or equal to 2 * 109.
 
 
 class Solution:
-    def uniquePaths_dp(self, m: int, n: int) -> int:
+    
+    def uniquePaths(self, m: int, n: int) -> int:
+
+        ## dp[-1][*] and dp[*][-1] can be accessed as "0"
+        dp =  [0]*(n+1) 
+        dp[0] = 1
+        for i in range(m):
+            for j in range(n):
+                dp[j] = dp[j] + dp[j-1]
+        return dp[n-1]
+        
+        
+    def uniquePaths_bottomup(self, m: int, n: int) -> int:
+        
+        
+        dp =[ [0]*(n+1) for _ in range(m+1)]
+        
+        ## dp[i][j] num of ways to reach (i,j)
+        ## add cushion row and column
+        ## dp[-1][*] and dp[*][-1] can be accessed as "0"
+        dp[0][0] = 1
+        dp[0][0] = 1
+        for i in range(m):
+            for j in range(n):
+                dp[i][j] += dp[i-1][j] + dp[i][j-1] ## since dp[i][j] will be updated once, we can use "+" to avoid dp[0][0] assignment issue
+        return dp[m-1][n-1]
+    def uniquePaths_topdown(self, m: int, n: int) -> int:
 
 
         ## method 1:
