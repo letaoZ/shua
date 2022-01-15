@@ -16,7 +16,7 @@ started,62(done),Unique Paths,★★,63 (done),64,120,174,931,,"I: O(mn), S = O(
 ,,,,712,1187,1143,1092,718,,
 ,1139,Largest 1-Bordered Square,★★★,,,,,,,"I: O(mn), S = O(mn)
 T = O(mn*min(n,m))"
-,688,Knight Probability in Chessboard,★★★,576,935,,,,,"I: O(mn) + k
+,688,Knight Probability in Chessboard,★★★,576(done),935,,,,,"I: O(mn) + k
 S = O(kmn), T = O(kmn)"
 started,322(done),Coin Change (knapsack),★★★,377(done),416 (knapsack),494,1043,1049(DONE),,"I: O(n) + k, S = O(n), T = O(kn)"
 ,,,,1220,1230,1262,1269,518(DONE),,
@@ -30,6 +30,9 @@ DONE,546,Remove Boxes,★★★★★,312,488,,,,,"I: O(n), S = O(n^3), T = O(n^
 DONE,943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,996,1125 (knapsack),,,,"I: O(n)
 S = O(n*2^n), T = (n^2*2^n)"
 DONE,329,Longest Increasing Path in a Matrix,,,,,,,,
+,238,Product of Array Except Self,,361,343,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
 ,,,,,,,,,,
 ,Leetcode DP,7 days ,,,,,,,,
 DAY1,509,Fibonacci Number,★,,,,,,,
@@ -88,4 +91,4 @@ DAY10,368,Largest Divisible Subset,★★,646. Maximum Length of Pair Chain,,,,
 DAY11,647,Palindromic Substrings,★★,string,,,,,,
 DAY12,1055,Shortest Way to Form String,★★,string,,,,,,
 DAY13,562,. Longest Line of Consecutive One in Matrix,,,,,,,,
-DAY14,238,Product of Array Except Self,,math,,,,,,
+DAY14,394,decode string,,math,,,,,,
