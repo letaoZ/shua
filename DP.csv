@@ -31,7 +31,7 @@ DONE,943,Find the Shortest Superstring,★★★★★,62_63_980_unique_paths,99
 S = O(n*2^n), T = (n^2*2^n)"
 DONE,329,Longest Increasing Path in a Matrix,,,,,,,,
 ,238,Product of Array Except Self,,361,343,,,,,
-,,,,,,,,,,
+,39,Combination Sum,★★★★★,,,,,,,Backtracking (DFS) or Knapsack
 ,,,,,,,,,,
 ,,,,,,,,,,
 ,Leetcode DP,7 days ,,,,,,,,

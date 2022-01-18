@@ -1,0 +1,12 @@
+Question: given list of elts = elts, given target number; find something
+
+solution:
+1. always start with dp = [sth.]*(target + 1)
+2. for loop: for elt in elts: do something
+3. inside the for loop
+    if you CAN reuse elts, then just: 
+        for number in range(elt, target+1): 
+            some dp operation
+    if you CANNOT reuse, then just: 
+        for number in range(target, elt-1,-1) (reversed range):
+            some dp opteration

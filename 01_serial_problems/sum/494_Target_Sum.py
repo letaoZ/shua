@@ -50,7 +50,7 @@ class Solution:
         P = (total+target)//2
         if 2* ( P )!=total+target:
             return 0
-        if abs(target) > total:
+        if abs(target) > total or P<0:
             return 0
         
         
