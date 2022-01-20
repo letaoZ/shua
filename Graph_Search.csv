@@ -20,9 +20,9 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 17,Letter Combinations of a Phone Number,★★,39,40,77,78,Combination
 ,,,90,216,,,
-46(DONE),Permutations,★★,47,784,943,996,Permutation
+46(DONE),Permutations,★★,(DONE) 47,784,943,996,Permutation
 22,Generate Parentheses,★★★,301,,,,DFS
-37(DONE),Sudoku Solver,★★★,51(DONE),52,46(DONE),10 (DONE),DFS—backtracking
+,,,,,,,
 79,Word Search,★★★,212,,,,DFS
 127,Word Ladder,★★★★,126,752,818,,BFS
 542,01 Matrix,★★★,675,934,,,BFS
@@ -30,7 +30,9 @@ Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unna
 ,,,842,282,,,
 1368, Minimum Cost to Make at Least One Valid Path in a Grid,★★★,,,,,Both bfs and dfs! Interesting!
 39,Combination Sum,★★★★★,,,,,Backtracking (DFS) or Knapsack
-,,,,,,,
+37(DONE),Sudoku Solver,★★★,51(DONE),52,46(DONE),10 (DONE),DFS—backtracking
+,,,78,77,47,90,
+,,,46,40,131,,
 ,Algorithm 21 day III,,,,,,
 ,DFS_BFS,,,,,,
 286,walls and gates,★★,,,,,
