@@ -29,10 +29,14 @@ Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unna
 698,Partition to K Equal Sum Subsets,★★★,93,131,(DONE) 241,,Partition
 ,,,842,282,,,
 1368, Minimum Cost to Make at Least One Valid Path in a Grid,★★★,,,,,Both bfs and dfs! Interesting!
+,,,,,,,
 39,Combination Sum,★★★★★,,,,,Backtracking (DFS) or Knapsack
+,,,,,,,
 37(DONE),Sudoku Solver,★★★,51(DONE),52,46(DONE),10 (DONE),DFS—backtracking
 ,,,78,77,47,90,
-,,,46,40,131,,
+,,,46,40,131,489,
+,,,,,,,
+,,,,,,,
 ,Algorithm 21 day III,,,,,,
 ,DFS_BFS,,,,,,
 286,walls and gates,★★,,,,,
@@ -42,3 +46,5 @@ Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unna
 752,Open the Lock,★★,,,,,
 1319, Number of Operations to Make Network Connected,★★,,,,,"edges in a tree, connected components"
 254,Factor Combinations,★★,,,,,"seems like dp, but NOT"
+241,Different Ways to Add Parentheses,★★,,,,,small improvement than just backtracking
+301,Remove Invalid Parentheses,★★,,,,,small improvement than just backtracking
