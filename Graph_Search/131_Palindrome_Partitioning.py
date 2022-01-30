@@ -2,9 +2,9 @@
 131. Palindrome Partitioning
 Medium
 
-5840
+5941
 
-173
+178
 
 Add to List
 
@@ -30,29 +30,34 @@ Constraints:
 1 <= s.length <= 16
 s contains only lowercase English letters.
 '''
+
+
 class Solution:
-    def partition_backtracking(self, s: str) -> List[List[str]]:
+    # def partition_backtracking(self, s: str) -> List[List[str]]:
+    def partition(self, s: str) -> List[List[str]]:
+
         ## time: N2^N , N = len(s), the N here is used for checking palidrome
-        ## use tree structure to illustrate this
+        ## use tree structure to illustrate this --> treet structure results in 2^N
         res = set()
         
-        candi = list(s)
+        pals = {}
+        candi = s
         
         def if_pal(ss):
+            if ss in pals:
+                return pals[ss]
             l, r = 0, len(ss)-1
             while l<=r and ss[l] == ss[r]:
                 l += 1
                 r -= 1
+                
+            pals[ss] = (l>r)
             return l>r
                 
         def dfs(i,candi,trace,):
-            
-            
             if i == len(s):
-                l = sum(len(_) for _ in trace)
-                if l == len(s):
-                    res.add(tuple(trace))
-            
+                res.add(tuple(trace))
+                return
             t = ""
             for j in range(i,len(candi)):
                 t += candi[j]
