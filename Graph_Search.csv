@@ -3,7 +3,7 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 200,Number of Islands,★★,547,695,733,,grid + connected components
 ,,,827,1162,,,
 841,Keys and Rooms,★★,1202,,,,"DFS, connected components"
-207,Course Schedule,★★★,210,802,,,topology sorting
+(DONE) 207,Course Schedule,★★★,(DONE) 210,802,,,topology sorting (DFS)
 399,Evaluate Division,★★★,839,952,990,,union find
 ,,,721,737,,,
 785,Is Graph Bipartite?,★★★,886,1042,,,"bipartition, graph coloring"

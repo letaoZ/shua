@@ -47,32 +47,22 @@ List = list()
 class Solution:
 
     def calculateMinimumHP(self, grid: List[List[int]]) -> int:
-        ## most recent submission 2021-06-07
+        ## most recent submission 2022-01-31
         ## Time = O(MN), 
-        M, N = len(grid), len(grid[0])
+        m, n = len(grid), len(grid[0])
         
-        ## blood needed in each cell
+        ## dp[i][j] := blood needed if starting at cell [i][j]
+        dp = [ [float('inf')] * (n+1) for _ in range(m+1)]
         
-        dp = [[0]*(N +1)for _ in range(M+1)]
+        ## just to be used as initial case
+        dp[m][n-1] = dp[m-1][n] = 1
         
-        
-        ## adding pad
-        for i in range(N):
-            dp[M][i] = float('inf')
-        for i in range(M):
-            dp[i][N] = float('inf')
-        
-        dp[M][N] = dp[M][N-1] = dp[M-1][N] = 1
-
-        
-        for r in range(M-1,-1,-1):
-            for c in range(N-1,-1,-1):
-                # if r+1>=M or c+1>=N: continue
-                dp[r][c] =max(1,-grid[r][c] + min(dp[r+1][c],dp[r][c+1]))
-        # for r in dp:
-        #     print(r)
+        for i in range(m-1, -1, -1):
+            for j in range(n-1, -1, -1):
+                dp[i][j] = max(1, -grid[i][j] + min(dp[i+1][j], dp[i][j+1]))
         return dp[0][0]
-
+    
+    
     def calculateMinimumHP_formal_DP_bottomup(self, g: List[List[int]]) -> int:
         
         
