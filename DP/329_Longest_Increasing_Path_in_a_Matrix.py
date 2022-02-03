@@ -47,33 +47,33 @@ class Solution:
         
         m, n = len(matrix), len(matrix[0])
         
-        ## res[i][j] := longest path starting at i,j
-        res = [[0]*n for _ in range(m)]
         
-        ## store max len so far
-        res0 = [1]
-        
+        ## 
+        ## starting at (i,j), the longest increasing sequence
+        ##
+        res = [1]
+        dp = [[0]*n for _ in range(m)]
         def dfs(i,j):
-            
-            if not (0<=i<m and 0<=j<n):
+            if not (0 <= i < m and 0 <= j < n):
                 return 0
-            if res[i][j]:
-                return res[i][j]
             
-            res[i][j] = 1
-            
-            tmp = 0
-            for di, dj in [(0,1),(0,-1),(1,0),(-1,0)]:
-                x,y = i+di, j+dj
-                if (0<=x<m and 0<=y<n and matrix[i][j]<matrix[x][y]):                              
-                    tmp = max(tmp, dfs(x,y) )
-                    
-            res[i][j] += tmp
-            res0[0] = max(res0[0], res[i][j])
-            return res[i][j]
+            if dp[i][j] > 0:
+                return dp[i][j]
+            dp[i][j] = 1 
+            for dx, dy in [(-1,0),(0,-1),(1,0),(0,1)]:
+                x, y =i + dx, j + dy
+                if not (0 <= x < m and 0 <= y < n):
+                    continue
+                
+                if matrix[i][j] < matrix[x][y]: ## the path starting at x,y can be extended to starting at i,j
+                    dp[i][j] = max(dp[i][j], dfs(x,y)+1)
         
+            res[0] = max(res[0], dp[i][j])
+            return dp[i][j] 
+
         for i in range(m):
             for j in range(n):
-                if not res[i][j]:
-                    dfs(i,j)
-        return res0[0]
+                if dp[i][j] != 0:
+                    continue
+                dfs(i,j)
+        return res[0]
