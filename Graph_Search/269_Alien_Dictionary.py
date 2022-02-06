@@ -43,8 +43,10 @@ words[i] consists of only lowercase English letters.
 
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
-        
-        ## g[a] indicates a > g[a]
+        ## num of vertices = letters = 26
+        ## nums of edges = len(words)
+        ## time complexity = O(len(words) + letters)
+        ## g[a] indicates a < g[a]
         g = collections.defaultdict(set)
         
         
