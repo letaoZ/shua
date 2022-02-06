@@ -1,3 +1,7 @@
+
+
+
+###about binary search
 1. always do: mid = l + (r-l) // 2
 2. mid could be the same as l; So whenever we update l, we need l = mid + 1; r = mid
 3. the final answer could be index "l" so we should return answer(l) if bla else none

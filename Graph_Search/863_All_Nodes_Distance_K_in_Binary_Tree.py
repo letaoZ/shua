@@ -43,7 +43,17 @@ target is the value of one of the nodes in the tree.
 #         self.left = None
 #         self.right = None
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+
+
 class Solution:
+
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
         ## for each node find its parent node and build a graph
         ## we assume nodes values are unique; the graph can be built using values
@@ -77,3 +87,39 @@ class Solution:
                     visited.append(nv)
         
         return list(queue)
+
+    def distanceK_dfs(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+        ## build a graph using the tree
+        
+        g = collections.defaultdict(set)
+        queue = collections.deque()
+        queue.append(root)
+        while queue:
+            L = len(queue)
+            for _ in range(L):
+                node = queue.popleft()
+                
+                if node.left:
+                    queue.append(node.left)
+                    g[node.val].add(node.left.val)
+                    g[node.left.val].add(node.val)
+                if node.right:
+                    queue.append(node.right)
+                    g[node.val].add(node.right.val)
+                    g[node.right.val].add(node.val)
+        
+        res = []
+        visited = []
+        def dfs(val,k_remain):
+            if val in visited:
+                return
+            if k_remain == 0:
+                res.append(val)
+            
+            for w in g[val]:
+                dfs(w,k_remain - 1)
+        
+        
+        dfs(target,k)
+        return res
+                

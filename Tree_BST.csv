@@ -1,0 +1,23 @@
+Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Comments,
+94,Binary Tree Inorder Traversal,★,144,145,429,589,590,traversal,
+,,,987,1302,,,,,
+100,Same Tree,★★,101,104,110,111,572,,
+,,,965,,,,,,
+102,Binary Tree Level Order Traversal,★★,107,429,872,,,collecting nodes,
+814,Binary Tree Pruning,★★★,669,1325,,,,,
+112,Path Sum,★★★,113,437,,,,,
+129,Sum Root to Leaf Numbers,★★★,257,,,,,,
+236,Lowest Common Ancestor of a Binary Tree,★★★,235,,,,,,
+297,Serialize and Deserialize Binary Tree,★★★,449,,,,,,
+508,Most Frequent Subtree Sum,★★★,,,,,,,
+124,Binary Tree Maximum Path Sum,★★★,543,687,,,,"Use both children, return one",
+968,Binary Tree Cameras,★★★★,337,979,,,,,
+,,,,,,,,,
+,,,,,,,,,
+98,Validate Binary Search Tree,★★,530,,,,,inorder,BST
+700,Search in a Binary Search Tree,★★,701,,,,,binary search,BST
+230,Kth Smallest Element in a BST,★★★,,,,,,inorder,BST
+99,Recover Binary Search Tree,★★★,,,,,,inorder,BST
+108,Convert Sorted Array to Binary Search Tree,★★★,,,,,,build BST,BST
+501,Find Mode in Binary Search Tree,★★★,,,,,,inorder,BST
+450,Delete Node in a BST,★★★★,,,,,,binary search,BST

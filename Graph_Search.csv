@@ -1,9 +1,10 @@
 Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
-133,Clone Graph,★★,138,,,,queue + hashtable
+133,Clone Graph,★★,138,,,,
 200,Number of Islands,★★,547,695,733,,grid + connected components
 ,,,827,1162,,,
 841,Keys and Rooms,★★,1202,,,,"DFS, connected components"
-(DONE) 207,Course Schedule,★★★,(DONE) 210,802,,,topology sorting (DFS)
+(DONE) 207,Course Schedule,★★★,(DONE) 210,802,(DONE) 1494,(DONE) 1136,topology sorting (DFS)
+,,,310,,,,
 399,Evaluate Division,★★★,839,952,990,,union find
 ,,,721,737,,,
 785,Is Graph Bipartite?,★★★,886,1042,,,"bipartition, graph coloring"
@@ -17,6 +18,8 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 943,,★★★★★,980,996,,,Hamiltonian path (DFS / DP)
 959,,★★★★★,,,,,union find / grid + CCs
 863,Find the Shortest Superstring,★★★,,,,,Tree to graph
+,,,,,,,
+,,,,,,,
 Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 17,Letter Combinations of a Phone Number,★★,39,40,77,78,Combination
 ,,,90,216,,,
@@ -48,3 +51,5 @@ Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unna
 254,Factor Combinations,★★,,,,,"seems like dp, but NOT"
 241,Different Ways to Add Parentheses,★★,,,,,small improvement than just backtracking
 301,Remove Invalid Parentheses,★★,,,,,small improvement than just backtracking
+269,Alien Dictionary,★★,,,,,DFS
+329,Longest Increasing Path in a Matrix,★★,,,,,DFS
