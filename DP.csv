@@ -4,7 +4,7 @@ started,70,Climbing Stairs,★,746 (done),1137,,,,,"I: O(n), S = O(n), T = O(n)"
 ,53,Maximum Subarray,★★,121,,,,,,
 started,62(done),Unique Paths,★★,63 (done),64,120,174,931,,"I: O(mn), S = O(mn), T = O(mn)"
 ,,,,1210,,,,,,
-,85,Maximal Rectangle,★★★,221,304,1277,,,,
+,(DONE)85,Maximal Rectangle,★★★,221,304,1277,,,,
 ,198,House Robber,★★★,213,309,740,790,801,,"I: O(n), S = O(3n), T = O(3n)"
 ,279,Perfect Squares,★★★,,,,,,,"I: n, S = O(n), T = O(n*sqrt(n))"
 ,139 (DONE),Word Break,★★★,140,818,,,,,"I: O(n), S = O(n), T = O(n^2)"

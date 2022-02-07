@@ -32,9 +32,87 @@ arr1[i] and arr2[i] are 0 or 1
 arr1 and arr2 have no leading zeros
 '''
 
-
-
 class Solution:
+    
+    def addNegabinary(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        ## Translate into : negative part as binary; pos part as binary
+        ## take sum of pos, sum of neg
+        ## take difference
+        
+        
+        def split_pos_neg(arr):
+            pos, neg = [], []
+            for i in range(1,len(arr)+1):
+                if i%2 == 0:
+                    pos.append(arr[-i])
+                    neg.append(0)
+                else:
+                    neg.append(arr[-i])
+                    pos.append(0)
+            ## reversed order
+            return pos, neg
+            
+        def sum_binary(a,b):
+            ## return reversed order
+            res = []
+            extra = 0
+            L = max(len(a),len(b))
+            for i in range(L):
+                cur_sum = extra
+                if i<len(a):
+                    cur_sum += a[i]
+                if i<len(b):
+                    cur_sum += b[i]
+                res.append(cur_sum%2)
+                extra = cur_sum//2
+            while extra:
+                res.append(extra%2)
+                extra //=2
+            return res
+        def sum_nbinary(a,b):
+            ## return reversed order
+            res = []
+            extra = 0
+            L = max(len(a),len(b))
+            for i in range(L):
+                cur_sum = extra
+                if i<len(a):
+                    cur_sum += a[i]
+                if i<len(b):
+                    cur_sum += b[i]
+                res.append(cur_sum%2)
+                cur_sum = -(cur_sum//2)
+            while extra:
+                res.append(extra%2)
+                cur_sum = -(extra//2)
+            return res
+        arrp1 , arrn1 = split_pos_neg(arr1)
+        arrp2 , arrn2 = split_pos_neg(arr2)
+
+        psum = sum_binary(arrp1, arrp2)
+        nsum = sum_binary(arrn1, arrn2)
+
+        res = sum_nbinary(psum, nsum)
+        res = res[::-1]
+        i = 0
+        while i<len(res) and res[i] == 0:
+            i += 1
+        return res[i:] if i<len(res) else [0]
+    
+#         def addNegabinary(A, B):
+#             res = []
+#             carry = 0
+#             while A or B or carry:
+#                 carry += (A or [0]).pop() + (B or [0]).pop()
+#                 res.append(carry & 1)
+#                 carry = -(carry >> 1)
+#             while len(res) > 1 and res[-1] == 0:
+#                 res.pop()
+#             return res[::-1]
+        
+#         a = [1,1]
+#         b = [1,0,0]
+#         print(addNegabinary(a,b))
     def addNegabinary_scan_one_by_one(self, arr1: List[int], arr2: List[int]) -> List[int]:
         ## make even odd addition
 
@@ -130,7 +208,7 @@ class Solution:
         else:
             return res[i:]
         
-    def addNegabinary(self, arr1: List[int], arr2: List[int]) -> List[int]:
+    def addNegabinary_even_odd_simplify(self, arr1: List[int], arr2: List[int]) -> List[int]:
         ## make even odd addition
         
         ## idea:

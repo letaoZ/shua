@@ -3,3 +3,4 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 7,Comments
 238,Product of Array Except Self,★,,,,method both sides approach
 343, Integer Break,★,,,,
 300,Longest Increasing Subsequence (),,,,,patience sorting!
+85,Maximal Rectangle,,,,,"left, right max"
