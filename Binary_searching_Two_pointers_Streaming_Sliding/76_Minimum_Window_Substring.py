@@ -47,6 +47,52 @@ Follow up: Could you find an algorithm that runs in O(m + n) time?
 '''
 
 class Solution:
+    def minWindow_negative_cnt(self, s: str, t: str) -> str:
+        if len(t) > len(s):
+            return ""
+        
+        t_cnt = {}
+        for w in t:
+            t_cnt[w] = t_cnt.get(w,0) + 1
+        
+        start = 0
+        t_total = len(t)
+        res = float("inf")
+        s_res = ""
+        for i in range(len(s)):
+            if s[i] not in t_cnt:
+                continue
+            if t_cnt[s[i]] > 0:
+                t_total -= 1    
+            t_cnt[s[i]] -= 1 ## allow cnt to go negative (we have more than we need)
+            
+            # print(t_cnt,t_total)
+            if t_total == 0:
+                ## shift start
+                for k in range(start, i+1):
+                    if s[k] not in t_cnt:
+                        start += 1
+                        if res> i-start+1:
+                            res = min(res, i-start+1)
+                            s_res = s[start:i+1]
+                    elif t_cnt[s[k]]<0:## we have more than we need so we can still ignore the letter
+                        start += 1
+                        t_cnt[s[k]] += 1
+                        if res> i-start+1:
+                            res = min(res, i-start+1)
+                            s_res = s[start:i+1]
+                    elif t_cnt[s[k]] == 0: ## the end of shifting!!; i.e. after passing letter at k, we will need 1 s[k]!!
+                        if res> i-start+1:
+                            res = min(res, i-start+1)
+                            s_res = s[start:i+1]
+                        start += 1
+                        t_cnt[s[k]] += 1
+                        t_total = 1
+                        break
+                # print(t_total)
+                # print(res)
+        return s_res
+
     def minWindow_brutal(self, s: str, t: str) -> str:
         ## slow but works
         
@@ -86,6 +132,56 @@ class Solution:
                 if res == n:
                     return s[i:i+L]
         return ""
+
+    
+    def minWindow_no_negative_cnt(self, s: str, t: str) -> str:
+        ## two dict
+        m,n = len(s), len(t)
+        if m<n or n==0:
+            return ""
+        for tt in t:
+            if tt not in s:
+                return ""
+            
+        ## for each letter in t, we can count number of letter needed by t
+        ## t = "aabd" : a2, b1, d1
+        window = collections.defaultdict(int)
+        need = {}
+        for tt in t:
+            need[tt] = need.get(tt,0)+1
+        total = 0
+        l, r = 0, 0
+        res_len = float('inf')
+        res_series = ""
+        for r in range(m):
+            ss = s[r]
+            # print(ss)
+            if ss in need:
+                window[ss] += 1
+                if need[ss]==window[ss]:
+                    total += 1
+            # print(need)
+            # print(total)
+            # print()
+            while( total == len(need) ):
+                sl = s[l]
+                if res_len>r-l+1:
+                    res_len = r-l+1
+                    res_series = s[l:r+1]
+                if sl not in need:
+                    pass
+                elif need[sl] == window[sl]:
+                    total -= 1
+                    window[s[l]] -= 1
+                elif need[sl]<window[sl]:
+                    window[sl] -= 1
+                l += 1
+
+            print("new_ left: ", l)
+            print()
+        return res_series
+
+
     def minWindow_brutal_with_window(self, s: str, t: str) -> str:
         m,n = len(s), len(t)
         if m<n or n==0:
@@ -134,50 +230,3 @@ class Solution:
             
         return res_s
     
-    
-    def minWindow(self, s: str, t: str) -> str:
-        ## two dict
-        m,n = len(s), len(t)
-        if m<n or n==0:
-            return ""
-        for tt in t:
-            if tt not in s:
-                return ""
-            
-        ## for each letter in t, we can count number of letter needed by t
-        ## t = "aabd" : a2, b1, d1
-        window = collections.defaultdict(int)
-        need = {}
-        for tt in t:
-            need[tt] = need.get(tt,0)+1
-        total = 0
-        l, r = 0, 0
-        res_len = float('inf')
-        res_series = ""
-        for r in range(m):
-            ss = s[r]
-            # print(ss)
-            if ss in need:
-                window[ss] += 1
-                if need[ss]==window[ss]:
-                    total += 1
-            # print(need)
-            # print(total)
-            # print()
-            while( total == len(need) ):
-                sl = s[l]
-                if res_len>r-l+1:
-                    res_len = r-l+1
-                    res_series = s[l:r+1]
-                if sl not in need:
-                    pass
-                elif need[sl] == window[sl]:
-                    total -= 1
-                    window[s[l]] -= 1
-                elif need[sl]<window[sl]:
-                    window[sl] -= 1
-                l += 1
-
-            print("new_ left: ", l)
-            print()
-        return res_series
