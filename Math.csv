@@ -4,3 +4,4 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 7,Comments
 343, Integer Break,★,,,,
 300,Longest Increasing Subsequence (),,,,,patience sorting!
 85,Maximal Rectangle,,,,,"left, right max"
+673,Number of Longest Increasing Subsequence,,,,,Patience algo ++
