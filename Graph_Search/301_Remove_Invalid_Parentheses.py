@@ -37,60 +37,60 @@ There will be at most 20 parentheses in s.
 
 '''
 
-
-
 class Solution:
     def removeInvalidParentheses(self, s: str) -> List[str]:
+        ## either remove left or right, depends on s
+        ## consider remove right first
+
         
-        def balance_right(s,leftp = '(', rightp = ')'):
-            i = 0
+        def build_parentheses(s, leftp = "(", rightp = ")"):
+            res = [""]
             N = len(s)
-            left_p = right_p = 0
-            res=['']
-            while i<N:
-                # print(i)
-                if s[i] == rightp:
-                    if left_p >= right_p+1: ## valid
-                        right_p += 1
-                        for ii,l in enumerate(res):
-                            res[ii] = l + rightp
-                    else:
-                        # now we have one extra right_p; we can remove this ) or remove some other previous )
-                        new_res = [_ for _ in res]
-                        for l in res:
-                            for j, e in enumerate(l):
-                                if e!=rightp:
-                                    continue
-                                new_l = l[:j] + l[j+1:] + rightp
-                                if new_l not in new_res:
-                                    new_res.append(new_l)
-                        res = [_ for _ in new_res]
+            left_cnt = 0
+            right_cnt = 0
+            right_idx = []
 
-                elif s[i] == leftp:
-                    left_p += 1
-                    for ii,l in enumerate(res):
-                        res[ii] = l + leftp
-                else:
-                    for ii,l in enumerate(res):
-                        res[ii] = l + s[i]
-                # print(res)
-                # print()
+            i = 0
+            while i < N:
+                if s[i] not in [leftp, rightp]:#["(",")"]:
+                    pass
+                elif s[i] == leftp:#"(":
+                    left_cnt += 1
+                elif s[i] == rightp:#")":
+                    right_cnt += 1
+
+                if left_cnt >= right_cnt:
+                    for ii in range(len(res)):
+                        res[ii] += s[i] 
+                else: ## remove a right p
+                    cur_res = [ _ for _ in res] ## expression without new rightp added
+                    for ll in res: ## start removing the extra ")", and add the new rightp at the end
+                        for il,vl in enumerate(ll):
+                            if vl == rightp: #")":
+                                tmpl = ll[:il] + ll[il+1:] + rightp #")"
+                                if tmpl not in cur_res:
+                                    cur_res.append(tmpl)
+                    res = [_ for _ in cur_res]
+                    right_cnt -= 1
                 i += 1
-            return res, left_p, right_p
+            return left_cnt, right_cnt, res
         
-        
-        res0, left_p ,right_p = balance_right(s,leftp = '(', rightp = ')')
+        left_cnt, right_cnt, left_res = build_parentheses(s)
+        if left_cnt == right_cnt:
+            return left_res
+        # print(left_res)
+        res = []
+        for sl in left_res:
+            left_cnt, right_cnt, right_res = build_parentheses(sl[::-1],")", "(")
+            # print("left_cnt, right_cnt",left_cnt, right_cnt)
+            right_res = [ll[::-1] for ll in right_res]
+            # print(right_res)
+            if left_cnt == right_cnt:
+                for kk in right_res:
+                    if kk not in res:
+                        res.append(kk)
 
-        if left_p <=right_p:
-            return res0
+        return res if res else [""]
         
-        final_res = []
-        for l in res0:
-            
-            tmp_res, _, _ =balance_right(l[::-1], ')','(')
-            for l in tmp_res:
-                l = l[::-1]
-                if l not in final_res:
-                    final_res.append(l)
         
-        return final_res
+        
