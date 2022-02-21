@@ -56,43 +56,6 @@ At most 105 calls will be made in total to update, current, maximum, and minimum
 current, maximum, and minimum will be called only after update has been called at least once.
 '''
 
-class StockPrice0:
-    def __init__(self):
-        self.prices = {}
-        ## you can use "from sortedcontainers import SortedDict"
-        ## to release sorted_prices + prices_to_timestamp
-        self.sorted_prices = []
-        self.prices_to_timestamp = collections.defaultdict(set)
-        self.cur_timestamp = -1
-
-        
-    def update(self, timestamp: int, price: int) -> None:
-        self.cur_timestamp  = max(self.cur_timestamp, timestamp)
-        if timestamp in self.prices:
-            ## need to check max, min; popout the wrong prices
-            old_price = self.prices[timestamp]
-            
-            if old_price != price:
-                self.prices_to_timestamp[old_price].remove(timestamp)
-                
-                if len(self.prices_to_timestamp[old_price]) == 0: ## no such price anymore. so we need to consider if old_price == max or min
-                    ## since sorted_prices is sorted and no duplicates
-                    del self.prices_to_timestamp[old_price]
-                    self.sorted_prices.remove(old_price)
-        self.prices[timestamp] = price            
-        self.prices_to_timestamp[price].add(timestamp)
-        if price not in self.sorted_prices:
-            bisect.insort(self.sorted_prices, price)
-    def current(self) -> int:
-        return self.prices[self.cur_timestamp]
-        
-
-    def maximum(self) -> int:
-        return self.sorted_prices[-1]
-
-    def minimum(self) -> int:
-        return self.sorted_prices[0]      
-
 from sortedcontainers import SortedDict
 
 class StockPrice:
@@ -121,6 +84,34 @@ class StockPrice:
     def minimum(self) -> int:
         return self.rec.peekitem(0)[0]
     
+class StockPrice0:
+    ## not using sorteddict for time_to_prices
+    def __init__(self):
+        self.time_to_prices = {}
+        self.rec = SortedDict()
+        self.cur_time = -1
+    def update(self, timestamp: int, price: int) -> None:
+        self.cur_time = max(self.cur_time, timestamp)
+        if timestamp in self.time_to_prices:
+            prev_price = self.time_to_prices[timestamp]
+            self.rec[prev_price].remove(timestamp)
+            if len(self.rec[prev_price]) == 0:
+                self.rec.pop(prev_price)
+        if not price in self.rec:
+            self.rec[price] = set()
+        self.rec[price].add(timestamp)
+        self.time_to_prices[timestamp] = price
+
+    def current(self) -> int:
+        # return self.time_to_prices.peekitem(-1)[1]
+        return self.time_to_prices[self.cur_time]
+
+    def maximum(self) -> int:
+        return self.rec.peekitem(-1)[0]
+
+    def minimum(self) -> int:
+        return self.rec.peekitem(0)[0]
+
 # Your StockPrice object will be instantiated and called as such:
 # obj = StockPrice()
 # obj.update(timestamp,price)
