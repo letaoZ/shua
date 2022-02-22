@@ -74,16 +74,18 @@ We want to try upper bound of (smallest sum among these m subarrays):
                     r = mid - 1
                 elif cnt == m: ## Since we are searching for upper bound different from before
                                ## we want to potentially the bound!! so
-                    l = mid  ## so we MUST return r
+                    l = mid  ## Since l takes mid, to make sure mid is updated everytime and while can end
+                            ## we must do mid = (l+r+1)//2!!
+                            ## since we will return r, searching in (l, r]
 
     potential code UPDATE: after figuring out we need to return right!
     binary search (l, r] 
     l = min(nums)-1 ## one subarray must contain the min and don't reach left
     r = sum(nums) ## max possible sum;
     ## NOTE: here we haven decided (l,r]
-    5. code structure to return l or r??
+    ## since left = mid, we take mid = (l+r+1)//2
             while l< r:
-                mid = l + (r-l)//2 ## as possible smallest sum
+                mid = (l+r+1)//2
                 tmp_sum = 0
                 cnt = 0
                 for t in nums:
@@ -98,7 +100,7 @@ We want to try upper bound of (smallest sum among these m subarrays):
                     r = mid - 1
                 elif cnt == m: ## Since we are searching for upper bound different from before
                                ## we want to potentially the bound!! so
-                    l = mid  ## so we MUST return r
+                    l = mid  ## so we  return r
             return r
 
     

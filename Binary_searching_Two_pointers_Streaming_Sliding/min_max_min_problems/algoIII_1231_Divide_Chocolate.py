@@ -42,8 +42,46 @@ Constraints:
 1 <= sweetness[i] <= 105
 '''
 
+    
 class Solution:
-    def maximizeSweetness(self, sweetness: List[int], k: int) -> int:
+    def maximizeSweetness_properuse_right(self, sweetness: List[int], k: int) -> int:
+        if k == len(sweetness) - 1:
+            return min(sweetness)
+        if k == 0:
+            return sum(sweetness)
+        
+        
+        ## the most you can get is M = sum(sweetness) // (k+1)
+        ## if everyone gets more than M, then (k+1)*M > sum(sweetness), wrong!
+        ## I can get at least min(sweetness)
+        
+        M = sum(sweetness) // (k+1)
+        
+        l, r = min(sweetness), M+1
+        
+        while l<r:
+            mid = (l+r+1)//2 ## here we do this because l = mid below!! we MUST be able to updat mid if left can take mid
+                            ## similar we must update mid if right can take mid!
+            cnt = 0
+            psum = 0
+            for s in sweetness:
+                psum+= s
+                if psum>=mid:
+                    cnt += 1
+                    psum = 0
+            
+            if cnt < k+1: ## I must get less
+                r = mid - 1
+            elif cnt > k+1: ## I can get more
+                l = mid
+            elif cnt == k+1: ## I can get more
+                l = mid ## since l can take mid, we must update mide code!!!!!!!
+        return r
+        
+        
+    
+    
+    def maximizeSweetness_lr_equal(self, sweetness: List[int], k: int) -> int:
         if k == len(sweetness) - 1:
             return min(sweetness)
         if k == 0:
@@ -95,5 +133,3 @@ class Solution:
                 
                 
                     
-            
-        
