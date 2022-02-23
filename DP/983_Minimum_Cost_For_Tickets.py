@@ -51,74 +51,62 @@ costs.length == 3
 1 <= costs[i] <= 1000
 
 '''
-
 class Solution:
-    
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
-        ### dp[k][i] := traveling arrived on day k, min cost, if i
-        ## i = 0,1,2 costs[i], bought tickets with cost[i]; i = 3 didn't buy tickets
-        from sortedcontainers import SortedSet
-        days = list(SortedSet(days))
-        
-        cost = 0        
-        
-        i = 0
-        past7 = collections.deque()
-        past30 = collections.deque()
-        
-        while i<len(days):
-            # print(days[i])
-            # print("past 7, ", past7)
-            # print("past 30, ", past30)
-            d = days[i]
-            while past7:
-                if past7[0][0] + 7 - 1 < d:
-                    past7.popleft()
-                else:
-                    break
-            while past30:
-                if past30[0][0] + 30 - 1 < d:
-                    past30.popleft()
-                else:
-                    break
-            past7.append( (d, cost+costs[1]))
-            past30.append( (d, cost+costs[2]))
-            cost = min(cost + costs[0], past7[0][1], past30[0][1])
-            # print("cost" , cost)
-            i += 1
-        return cost
-        
-    def mincostTickets_mem_N(self, days: List[int], costs: List[int]) -> int:
-        ### dp[k][i] := traveling arrived on day k, min cost, if i
-        ## i = 0,1,2 costs[i], bought tickets with cost[i]; i = 3 didn't buy tickets
-        from sortedcontainers import SortedSet
-        days = list(SortedSet(days))
-        if len(days) == 1:
-            return min(costs)
-        
+        ## dp[k] min cost to travel on day k
+        ## if k not in days, it will be the previous day's cost
+        ## eg input is [1,300], it means you travel on day 1, then rest; till day 300, you must travel
 
-            
-        ## dp[i] := min cost to reach day i
+        dp = [-1]*(days[-1] + 1)
         
-        days = [_ - days[0]+1 for _ in days]
+        dp[0] = 0
         
-        dp = [float('inf')]*(days[-1]+1)        
-        dp[0] = 0        
-        costs_map = {c:delta for delta,c in zip(costs,[1,7,30])}
-        # print(days)
-        # print(dp)
-        for i in range(1,days[-1]+1):
+        i = 1
+        
+        for i in range(1, len(dp)):
             if i not in days:
                 dp[i] = dp[i-1]
-            else:
-                cur_res = float("inf")
-                for k in [1,7,30]:
-                    if i-k>0:
-                        cur_res = min(dp[i-k]+costs_map[k], cur_res)
-                    else:
-                        cur_res = min(cur_res, costs_map[k])
-
-                dp[i] = cur_res
                 
-        ## eg input is [1,300], it means you travel on day 1, then rest; till day 300, you must travel
+            elif i in days and dp[i]>=0:
+                pass
+            elif i in days and dp[i] == -1:
+                cur_cost = float('inf')
+                for idx, d in zip(range(3),[1,7,30]):
+                    if i-d > 0:
+                        cur_cost = min(cur_cost, dp[i-d]+costs[idx])
+                    else:
+                        cur_cost = min(cur_cost, costs[idx])
+                dp[i] = cur_cost
         return dp[-1]
+    
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        
+        ## cost7: purchase history of 7 day tickets, and the tickets are still valid
+        ## elt = (day of purchase, cost total on that date)
+        cost7 = collections.deque() 
+        cost30 = collections.deque()
+        
+        res = 0
+        for d in days:
+            while cost7:
+                ## earliest purchase not valid to use today
+                if cost7[0][0] + 7 - 1 < d:
+                    cost7.popleft()
+                else:
+                    break
+            while cost30:
+                ## not valid to use today
+                if cost30[0][0] + 30 - 1 < d:
+                    cost30.popleft()
+                else:
+                    break
+            
+            ## add new costs
+            cost7.append( (d, res+costs[1]))
+            cost30.append( (d, res+costs[2]))
+        
+            ## one day pass only last the day
+            res = min(res+costs[0], cost7[0][1], cost30[0][1])
+        return res
+        
+        
