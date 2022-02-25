@@ -21,3 +21,6 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,
 108,Convert Sorted Array to Binary Search Tree,★★★,,,,,,build BST,BST
 501,Find Mode in Binary Search Tree,★★★,,,,,,inorder,BST
 450,Delete Node in a BST,★★★★,,,,,,binary search,BST
+,,,,,,,,,
+,,,,,,,,,
+315,Count of Smaller Numbers After Self,★★★,,,,,,Fenwick!,
