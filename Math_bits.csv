@@ -1,12 +1,14 @@
-Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 7,Comments
-650,2 Keys Keyboard,★,,,,prod decomposition
-238,Product of Array Except Self,★,,,,method both sides approach
-343, Integer Break,★,,,,
-300,Longest Increasing Subsequence (),,,,,patience sorting!
-85,Maximal Rectangle,,,,,"left, right max"
-673,Number of Longest Increasing Subsequence,,,,,Patience algo ++
-287,Find the Duplicate Number,,,,,Floyd Cycle detection
-1494,Parallel Courses II,Hard,,,,"when a given n is small, we may consider the method"
-995,Min number of k consecutive bit flips,,,,,bits
-864,Shortest_Path_to_Get_All_Keys,,,,,bits
-260,Single Number III,,,,,bits
+Id,Name,Difficulty,Similar,Comments
+650,2 Keys Keyboard,★,,prod decomposition
+238,Product of Array Except Self,★,,method both sides approach
+343, Integer Break,★,,
+300,Longest Increasing Subsequence (),,,patience sorting!
+85,Maximal Rectangle,,,"left, right max"
+673,Number of Longest Increasing Subsequence,,,Patience algo ++
+287,Find the Duplicate Number,,,Floyd Cycle detection
+1494,Parallel Courses II,Hard,,"when a given n is small, we may consider the method"
+995,Min number of k consecutive bit flips,,,bits
+864,Shortest_Path_to_Get_All_Keys,,,bits
+260,Single Number III,,,bits
+28,strstr,,,KMP
+647,Palindromic Substrings,, 5. Longest Palindromic Substring,Manacher’s
