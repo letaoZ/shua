@@ -29,24 +29,14 @@ All the numbers of nums are unique.
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
-        
-        def dfs(nums,trace, i):
-            
+        def dfs(i, trace, nums, res):
             res.append([_ for _ in trace])
-            
-            if i == len(nums):    
+            if i == len(nums):
                 return
             
-
-            for j in range(i,len(nums)):
-                trace.append(nums[j])
-                dfs(nums,trace,j+1)
-                
-                trace.pop()
-            
-        
-        
-        dfs(nums,[],0)
+            for j in range(i, len(nums)):
+                dfs(j+1, trace+[nums[j]], nums, res)
+        dfs(0, [], nums, res)
         return res
     
     

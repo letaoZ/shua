@@ -20,6 +20,7 @@ T = O(mn*min(n,m))"
 S = O(kmn), T = O(kmn)"
 started,322(done),Coin Change (knapsack),★★★,377(done),416 (knapsack),494,1043,1049(DONE),,"I: O(n) + k, S = O(n), T = O(kn)"
 ,,,,1220,1230,1262,1269,518(DONE),,
+,,,,216,,,,,,
 ,813,Largest Sum of Averages,★★★★,1278,1335,410,,,,"I: O(n) + k
 S = O(n*k), T = O(kn^2)"
 ,1223,Dice Roll Simulation,★★★★,,,,,,,"I: O(n) + k + p

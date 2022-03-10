@@ -24,9 +24,30 @@ Constraints:
 All the integers of nums are unique.
 '''
 
+
 class Solution:
+    def permute_simple_no_pop(self, nums: List[int]) -> List[List[int]]:
+        
+        
+        res = []
+        
+        def dfs( trace, candi, res):
+            if len(candi) == 0:
+                res.append([_ for _ in trace])
+                return
+            
+            for i in range(len(candi)):
+                
+                dfs(trace + [candi[i]], candi[:i] + candi[i+1:], res)
+                
+        dfs([],nums,res)
+        return res
+    
     def permute0(self, nums: List[int]) -> List[List[int]]:
-        ## dfs: backtracking
+        
+        
+        ## DFS: backtracking
+        
         res = []
         n = len(nums)
         visited = [0]*n ## index i is visited or not
@@ -48,7 +69,8 @@ class Solution:
                 
         dfs([],visited,res)
         return (res)
-    
+
+
     
     def permute(self, nums: List[int]) -> List[List[int]]:
         

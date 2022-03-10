@@ -41,26 +41,16 @@ Constraints:
 '''
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        
-        
         res = []
-        
-        def dfs(n,trace,i):
-            
-            if len(trace) > k:
-                return
-            
-            if len(trace) == k:
+        def dfs(i, trace, k, n, res):
+            if k == 0:
                 res.append([_ for _ in trace])
                 return
             
-            for j in range(i,n+1):
-                trace.append(j)
-                dfs(n, trace, j+1)
-                trace.pop()
-                
-                
-        dfs(n, [], 1)
+            for j in range(i, n+1):
+                dfs(j+1, trace + [j], k-1, n, res)
+        
+        dfs(1,[], k, n, res)
         return res
-            
+        
                 

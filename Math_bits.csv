@@ -12,3 +12,4 @@ Id,Name,Difficulty,Similar,Comments
 260,Single Number III,,,bits
 28,strstr,,,KMP
 647,Palindromic Substrings,, 5. Longest Palindromic Substring,Manacher’s
+2044,Count Number of Maximum Bitwise-OR Subsets,,,bits

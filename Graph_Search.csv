@@ -21,8 +21,9 @@ Id,Name,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
 ,,,,,,,
 ,,,,,,,
 Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unnamed: 6,Comments
-17,Letter Combinations of a Phone Number,★★,39,40,77,78,Combination
-,,,90,216,,,
+17,Letter Combinations of a Phone Number,★★,90,216,77,78,Combination
+,,,,,,,
+,,,,,,,
 46(DONE),Permutations,★★,(DONE) 47,784,943,996,Permutation
 22,Generate Parentheses,★★★,301,,,,DFS
 ,,,,,,,
@@ -38,8 +39,8 @@ Id,Regions Cut By Slashes,Difficulty,Similar Problems,Unnamed: 4,Unnamed: 5,Unna
 37(DONE),Sudoku Solver,★★★,51(DONE),52,46(DONE),10 (DONE),DFS—backtracking
 ,,,78,77,47,90,
 ,,,46,40,131,489,
-,,,132,,,,"can use backtracking, bUT too slow (better dp)"
-,,,,,,,
+,,,132,2044,,,"can use backtracking, bUT too slow (better dp)"
+,,,39,40,,,
 ,Algorithm 21 day III,,,,,,
 ,DFS_BFS,,,,,,
 286,walls and gates,★★,,,,,

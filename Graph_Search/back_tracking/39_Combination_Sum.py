@@ -36,6 +36,7 @@ All elements of candidates are distinct.
 1 <= target <= 500
 '''
 
+
 class Solution:
     
     def combinationSum_knapsack(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -43,21 +44,21 @@ class Solution:
         ## time = O(len(candidtes)*target)
         ## for each sum, keep track combinations reaching that sum
         
-        sum_dic = collections.defaultdict(list)
-        sum_dic[0].append([])
-        dp = [0]*(target + 1)## num of combinations
-        dp[0] = 1 ##
+        traces = collections.defaultdict(list)
+
+        traces[0].append([])
         for c in candidates:
-            for ss in range(c,target+1):
-                if sum_dic[ss-c]: ## nonempty
-                    sum_dic[ss] += [ll + [c] for ll in sum_dic[ss-c]]
-        
-        res = sum_dic[target]
+            for wt in range(c,target+1):
+                if traces[wt-c]:
+                    for l in traces[wt-c]:
+                        traces[wt].append(l + [c])
+        if traces[target] == [[]]:
+            return []
+        return traces[target]
         # since target >= 1, we don't need the following step
         # if len(res) == 0 or len(res[0]) == 0:
         #     return []
         
-        return res
                 
 
         
@@ -81,4 +82,22 @@ class Solution:
                 dfs(i, target,trace,cur_sum+c,res )
                 trace.remove(c)
         dfs(0, target,[],0,res)
+        return res
+    
+    
+    def combinationSum_backtracking_shorten(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        res = []
+        def dfs(i,target,trace, candidates, res):
+            
+            if target<0:
+                return
+            if target == 0:
+                res.append([_ for _ in trace])
+                return
+            
+            for j in range(i,len(candidates)):
+                dfs(j, target - candidates[j], trace + [candidates[j]], candidates, res)
+                
+        dfs(0,target, [], candidates, res)
         return res

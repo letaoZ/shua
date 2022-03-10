@@ -30,7 +30,25 @@ Constraints:
 1 <= nums.length <= 10
 -10 <= nums[i] <= 10
 '''
+
 class Solution:
+    def subsetsWithDup_simplify(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+        def dfs(i, trace, nums,  res):
+            
+            if trace not in res:
+                res.append([_ for _ in trace])
+            
+            if i == len(nums):
+                return
+            
+            for j in range(i,len(nums)):
+                dfs(j+1, trace + [nums[j]], nums, res)
+                
+        dfs(0, [], nums, res)
+        return res
+    
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         res = set()
         nums.sort() ## use sort to avoid future duplicates
