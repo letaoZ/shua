@@ -13,3 +13,4 @@ Id,Name,Difficulty,Similar,Comments
 28,strstr,,,KMP
 647,Palindromic Substrings,, 5. Longest Palindromic Substring,Manacher’s
 2044,Count Number of Maximum Bitwise-OR Subsets,,,bits
+370,370. Range Addition,★,1109. Corporate Flight Bookings；1094. Car Pooling,"Diff, range sum"

@@ -44,10 +44,29 @@ Constraints:
 1 <= nums.length <= 105
 1 <= k <= nums.length
 '''
-
 class Solution:
     
-    def minKBitFlips(self, nums: List[int], k: int) -> int:
+    def minKBitFlips_dff(self, nums: List[int], k: int) -> int:
+        if not (0 in nums): 
+            return 0
+        ## when we flip k numbers, it is lie nums[i]+1,... nums[i+k-1]+1;
+        ## then the diff will only change at nums[i] and nums[i+k]
+        ## then we can recover the original nums by keeping on adding it back
+        cnt = 0
+        dff = [nums[0]] + [nums[i]-nums[i-1] for i in range(1,len(nums))] + [0]## cushion
+        psum = 0
+        for i in range(len(nums)):
+            psum += dff[i]
+            if (psum % 2): continue
+            if i+k-1 > len(nums) - 1: return -1 ## cannot flip anymore
+            cnt += 1
+            dff[i] += 1 ## one more flipt
+            dff[i+k] -= 1
+            psum += 1
+        return cnt
+
+    
+    def minKBitFlips_window(self, nums: List[int], k: int) -> int:
         if not (0 in nums): 
             return 0
         
@@ -83,7 +102,7 @@ class Solution:
         return res
     
     
-    def minKBitFlips_update(self, nums: List[int], k: int) -> int:
+    def minKBitFlips_brutal(self, nums: List[int], k: int) -> int:
         ## slow but works
         if not (0 in nums): 
             return 0
