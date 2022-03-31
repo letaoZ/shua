@@ -34,96 +34,76 @@ Constraints:
 1 <= s.length <= 1000
 s consists of lowercase English letters.
 '''
+
+
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        ## Manacher's
-        pads = ['#']*(len(s)*2 + 1 + 2) ## add padding for begnning and end
-        for i in range(len(s)):
-            pads[i*2 + 2] = s[i]
-        pads[0] = "^"
-        pads[-1] = "%"
-        ## must haves
-        maxLen = [0]*len(pads)
-        center = 0
-        rightmost = 0
-        
-        for i in range(2,len(pads)-1):
-            if i<center:
-                i_mirror = 2*center - i ## my max arm length is at least the mirror's length; or the furthest I can reach before rightmost
-                maxLen[i] = min(maxLen[i_mirror], rightmost - i)
-            while ( pads[i-maxLen[i]-1] == pads[i+maxLen[i]+1]):
-                maxLen[i] += 1 ## try extend the uncompared arms
+        sz = len(s) 
+        if sz <= 1: return 1
+        if len(set(s)) == 1:
+            return (sz * (sz+1))//2
             
-            if i + maxLen[i] > rightmost:
-                rightmost = i + maxLen[i]
+            
+        ## Manacher's algo
+        cnt = 0
+        ## padding
+        ## abc --> $#a#b#c#% 
+        pads = ["#"]*(2*len(s)+1 + 2)
+        pads[0] = "$"
+        pads[-1] = "%"
+        
+        for i in range(len(s)):
+            pads[2+2*i] = s[i]
+        
+        ##manacher's
+        
+        center = 0 ## current center of a long palin
+        right = 0  ## rightmost point of a palin
+        maxlen = [0]*len(pads) ## maxLen[i] := max symmetry armlen about pads[i] (not including i); $#a#a#% -> at maxlen[1]: 1; maxlen[2]:2
+        for i in range(1, len(pads)-1):
+            if (center<=i<right):
+                i_mirror = 2*center - i
+                maxlen[i] = min(right-i, maxlen[i_mirror])
+            ## expand center at i
+            while( pads[i+maxlen[i] +1 ] == pads[i- maxlen[i] - 1 ]):
+                maxlen[i] += 1
+                
+            ## if we have new center
+            if (maxlen[i] +i > right):
                 center = i
-        ## remove bounds padding
-        pads = pads[1:-1]
-        maxLen = maxLen[1:-1]
+                right = maxlen[i] +i
+                
+            ## original s: will have a palin of len maxlen[i] 
+            cnt += (maxlen[i] //2)
+            
+        cnt += sz ## individual letters
         
-        ## get all palin (center taken from pads) with length at most L
-        ## NOTE: if center is even, then it's a letter in pads, else it's a "#"
-        ## but we can always get corresponding bounds
-        ## function to get all palindrom
-        get_all_pal = False
-        def get_palin(center,L, s):
-            orig_left, orig_right = ( (center - L +1) - 1 )//2, ( (center + L -1) - 1 )//2
-            res = []
-            while orig_left <= orig_right:
-                res.append(s[orig_left:orig_right+1])
-                orig_left += 1
-                orig_right -= 1
-            return res
-        
-        if get_all_pal == True:
-            res = []
-            for center, L in enumerate(maxLen):
-                if L == 0: 
-                    continue
-
-                res.extend(get_palin(center,L,s))
-
-        ## get number of palin
-        res = len(s)
-        ## now count the palin of len > 1
-        for i,v in enumerate(maxLen):
-            ## if ith position if '#' i.e. i is even
-            if i == 0:
-                continue
-            res += (v//2)
-        return res
-        
-class Solution:
-    def countSubstrings(self, s: str) -> int:
-        ## brutal
-        res = 0
-        for mid in range(len(s)):
-            ## odd length
-            cnt = 1
-            l, r = mid-1, mid+1
-            while l>=0 and r<len(s):
-                if s[l] == s[r]:
-                    cnt += 1
-                    l -= 1
-                    r += 1
-                else:
-                    break
+        return cnt
+            
+    def countSubstrings_BRUTAL(self, s: str) -> int:
+        ## BRUTAL
+        res = 1
+        sz = len(s)
+        if len(set(s)) == 1:
+            return (sz*(sz+1)) // 2
+        ## i is center
+        for i in range(1,sz):
+            ## odd
+            cnt = 1 ## each letter is counted here
+            l, r = i-1, i+1
+            while (0<=l and r<sz and s[l] == s[r]):
+                l -= 1
+                r += 1
+                cnt += 1
             res += cnt
             
-            if mid+1<len(s) and s[mid] == s[mid+1]:
-                cnt = 1
-                l = mid-1
-                r = mid+2
-                while l>=0 and r<len(s):
-                    if s[l] == s[r]:
-                        cnt += 1
-                        l -= 1
-                        r += 1
-                    else:
-                        break
-                        
-                        
+            if ( s[i-1] == s[i]):
+                cnt = 1 #
+                l, r = i-2, i+1
+                while (0<=l and r<sz and s[l] == s[r]):
+                    l -= 1
+                    r += 1
+                    cnt += 1
                 res += cnt
-                
                 
         return res

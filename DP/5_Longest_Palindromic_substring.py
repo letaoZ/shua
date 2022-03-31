@@ -31,59 +31,49 @@ Constraints:
 1 <= s.length <= 1000
 s consist of only digits and English letters.
 '''
+
+
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
+    def longestPalindrome_Manacher(self, s: str) -> str:
+        if len(s) <= 1: return s
         
         ## Manacher's algo
         ## adding pads
-        
-        pads = ['#'] * (2*len(s) + 1)
+        pads = ["#"]*(2*len(s) + 1 + 2) ## extra padding at the beginning and end; easy for comparison later
+        pads[0] = '%'
+        pads[-1] = '$' ## extra padding at the beginning and end; easy for comparison later
         for i in range(len(s)):
-            pads[2*i + 1] = s[i]
-        pads = ['^'] + pads + ['%'] ## added pading for easy of running comparison algo
-        
-        
-        ## must have parameters
-        maxLen = [0]*len(pads)
-        center = 0
-        rightmost = 0
-        
-        for i in range(2, len(pads) - 1):
-            if i< center: ## about i's longest palindrome
-                mirror_i = 2*center - i ## update i's current maxLen
-                maxLen[i] = min(rightmost-i, maxLen[mirror_i])
-                
-            ## now see if we can expand beyond rightmorse
-            ## we will stop because we added padding ^ and &
-            while (pads[i+maxLen[i]+1] == pads[i-maxLen[i]-1]):
-                maxLen[i] += 1
+            pads[2+2*i] = s[i]
             
-            if i+maxLen[i] > rightmost:
-                rightmost = i+maxLen[i]
-                center = i
-        maxLen = maxLen[1:-1] ## remove the padding at the begnning and end
-        len_res = max(maxLen)
-        idx = maxLen.index(len_res)
-       
-        orig_left, orig_right = ((idx - len_res + 1) - 1 ) //2, ((idx + len_res - 1) - 1) // 2
+        ## mushave parameters
+        center = 0
+        right = 0
+        maxlen = [0]*len(pads)
         
-        
-        ## num of palindrome
+        ## these two are just for this problems
         res = 0
-        pads = pads[1:-1]
-        for idx, v in enumerate(maxLen):
-            if v > 0:
-                if pads[idx] == "#":
-                    res += v//2
-                else:
-                    res += (v-1) // 2
-        print(res)
-        
-        
-        
-        return s[orig_left:orig_right+1]
+        res_i = 0
+        for i in range(1, len(pads)-1): ## skip padding at the beginning and end
+            if center<=i<right:
+                i_mirror = 2*center - i
+                maxlen[i] = min(right-i, maxlen[i_mirror])
+            ## expand at i
+            
+            while ( pads[i + maxlen[i]+1] == pads[i-maxlen[i]-1]):
+                maxlen[i]+= 1
+            
+            if (i + maxlen[i] > right):
+                center = i
+                right = i + maxlen[i]
+                
+                
+            ## these ops are just for this problems
+            if res < maxlen[i]:
+                res = max(res, maxlen[i])
+                res_i = i
+        res_s = "".join([c for c in pads[res_i - maxlen[res_i] : res_i + maxlen[res_i] + 1] if c!='#'])
+        return res_s
 
-class Solution1:
     def longestPalindrome(self, s: str) -> str:
         
         ## brutal
@@ -100,8 +90,7 @@ class Solution1:
             if res_l == N:
                 return res
         return res
-
-
+    
     def longestPalindrome_slower(self, s: str) -> str:
         
         if len(s) <= 1:
