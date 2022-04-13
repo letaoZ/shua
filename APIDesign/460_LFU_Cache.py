@@ -55,6 +55,73 @@ At most 2 * 105 calls will be made to get and put.
  
 '''
 
+## use SortedDict and OrderedDict
+from sortedcontainers import SortedDict
+from collections import OrderedDict
+class LFUCache:
+
+    
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.capUsage = 0
+        self.keyValue = {}
+        self.keyCnt = {}
+        self.cntKey = SortedDict()
+        
+    def get(self, key: int) -> int:
+        # print(f"get {key} ")
+        # print("keyCnt ",self.keyCnt)
+        # print("cnt ", self.cntKey)
+        
+        if self.capacity == 0 or key not in self.keyValue: return -1
+        
+        ret = self.keyValue[key]
+        ntimes = self.keyCnt[key]
+        self.cntKey[ntimes+1] = self.cntKey.get(ntimes+1, OrderedDict())
+        self.cntKey[ntimes+1][key] = 1
+        
+        self.keyCnt[key] += 1
+        
+        del self.cntKey[ntimes][key] 
+        
+        if len(self.cntKey[ntimes]) == 0:
+            del self.cntKey[ntimes]
+        # print("keyCnt: ", self.keyCnt)
+        # print("cntKey: ", self.cntKey)
+        return ret
+        
+    def put(self, key: int, value: int) -> None:
+        # print(f"put {key} ")
+        # print("keyCnt: ", self.keyCnt)
+        # print("cnt: ", self.cntKey)
+        
+        if self.capacity == 0: return None
+        if key in self.keyValue:
+            self.get(key)
+            self.keyValue[key] = value
+         ## delete least freq used
+        else:
+            if self.capUsage == self.capacity:
+                ntimes, ndict = self.cntKey.popitem(0)
+                self.capUsage -= 1
+                oldKey, _ = ndict.popitem(last=False)
+                del self.keyCnt[oldKey]
+                del self.keyValue[oldKey]
+                if ndict:
+                    self.cntKey[ntimes] = ndict
+            self.capUsage += 1
+            self.keyValue[key] = value
+            self.keyCnt[key] = 1
+
+            self.cntKey[1] = self.cntKey.get(1,OrderedDict())
+            self.cntKey[1][key] = 1
+        # print("self.cntKey", self.cntKey)
+        # print("self.keyCnt", self.keyCnt)
+
+
+
+
+
 import collections
 
 class Node:
