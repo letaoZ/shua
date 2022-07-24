@@ -36,7 +36,10 @@ Constraints:
 -231 <= nums[i] <= 231 - 1
 Each integer in nums will appear twice, only two integers will appear once.
 '''
+from typing import *
+
 class Solution:
+
     def singleNumber(self, nums: List[int]) -> List[int]:
         
         
