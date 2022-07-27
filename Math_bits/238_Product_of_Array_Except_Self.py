@@ -100,3 +100,4 @@ class Solution:
             res = [0]*len(nums)
             
         return res
+
